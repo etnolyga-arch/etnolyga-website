@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-green-dark: #204C36;
+  --color-green-light: #BBDBBF;
+  --color-graphite: #171717;
+  --font-display: "Funnel Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  color: #171717;
+  font-family: "DM Sans", sans-serif;
+}
