@@ -39,8 +39,9 @@ export default function Navbar() {
 
       {/* Main nav */}
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-3">
-        <Link href="/" className="font-display text-lg font-semibold text-white tracking-wider">
-          ETNOLYGA
+        <Link href="/" className="flex flex-col items-start leading-none">
+          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white leading-tight">ETN<span className="text-green-light">♦</span></span>
+          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white/55 leading-tight">LYGA</span>
         </Link>
 
         {/* Desktop */}

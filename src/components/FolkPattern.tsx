@@ -2,6 +2,17 @@ export default function FolkPattern({ className = '', inverted = false }: { clas
   const bg = inverted ? '#BBDBBF' : '#204C36';
   const accent = inverted ? '#204C36' : '#BBDBBF';
 
+  // Pixel diamond-cross motif — each unit is 4 px, tile is 32×32
+  const pixels: [number, number][] = [
+    [3, 0],
+    [2, 1], [3, 1], [4, 1],
+    [1, 2], [3, 2], [5, 2],
+    [0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3],
+    [1, 4], [3, 4], [5, 4],
+    [2, 5], [3, 5], [4, 5],
+    [3, 6],
+  ];
+
   return (
     <div className={`w-full overflow-hidden h-8 ${className}`} aria-hidden="true">
       <svg
@@ -11,13 +22,11 @@ export default function FolkPattern({ className = '', inverted = false }: { clas
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="960" height="32" fill={bg} />
-        {Array.from({ length: 30 }).map((_, i) => (
-          <g key={i} transform={`translate(${i * 32}, 0)`}>
-            <polygon points="16,2 30,16 16,30 2,16" fill={accent} opacity="0.5" />
-            <polygon points="16,7 25,16 16,25 7,16" fill={bg} />
-            <rect x="13" y="13" width="6" height="6" fill={accent} opacity="0.9" />
-            <line x1="0" y1="16" x2="6" y2="16" stroke={accent} strokeWidth="1" opacity="0.3" />
-            <line x1="26" y1="16" x2="32" y2="16" stroke={accent} strokeWidth="1" opacity="0.3" />
+        {Array.from({ length: 30 }).map((_, tileIdx) => (
+          <g key={tileIdx} transform={`translate(${tileIdx * 32}, 0)`}>
+            {pixels.map(([px, py]) => (
+              <rect key={`${px}-${py}`} x={px * 4} y={py * 4} width={4} height={4} fill={accent} />
+            ))}
           </g>
         ))}
       </svg>

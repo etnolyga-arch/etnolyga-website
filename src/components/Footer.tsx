@@ -1,70 +1,71 @@
 import Link from 'next/link';
 import FolkPattern from './FolkPattern';
 
+const navLinks = [
+  { href: '/', label: 'Pradžia' },
+  { href: '/tvarkarastis', label: 'Tvarkaraštis' },
+  { href: '/turnyrine-lentele', label: 'Turnyrinė lentelė' },
+  { href: '/komandos', label: 'Komandos' },
+  { href: '/apie-ripka', label: 'Apie ripką' },
+  { href: '/naujienos', label: 'Naujienos' },
+  { href: '/kontaktai', label: 'Kontaktai' },
+];
+
+const socials = [
+  { label: 'FB', href: 'https://facebook.com/etnolyga', title: 'Facebook' },
+  { label: 'IG', href: 'https://instagram.com/etnolyga', title: 'Instagram' },
+  { label: 'YT', href: 'https://youtube.com/@etnolyga', title: 'YouTube' },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-graphite text-white mt-auto">
-      <FolkPattern />
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <footer className="bg-green-dark text-white mt-auto">
+      <FolkPattern inverted />
+      <div className="max-w-6xl mx-auto px-6 pt-10 pb-10">
+        <div className="flex flex-col md:flex-row md:justify-between gap-8 mb-8">
+          {/* Sport label + nav links */}
           <div>
-            <div className="font-display text-xl font-semibold tracking-wider mb-3">ETNOLYGA</div>
-            <p className="text-xs text-white/50 leading-relaxed">
-              Lietuvos etnosporto komiteto iniciatyva, puoselėjanti lietuviškus tradicinius sporto žaidimus.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-4">Kontaktai</h4>
-            <div className="space-y-1.5">
-              <p className="text-sm text-white/70">etnosportas@gmail.com</p>
-              <p className="text-sm text-white/70">+37067992665</p>
-              <p className="text-sm text-white/70">I–V 8:00–17:00</p>
+            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/35 mb-5">RIPKA</p>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-2.5">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-white/65 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-4">Socialiniai tinklai</h4>
-            <div className="flex flex-col gap-2">
+
+          {/* Social icon circles */}
+          <div className="flex items-start gap-2.5 md:mt-9">
+            {socials.map((s) => (
               <a
-                href="https://facebook.com/etnolyga"
+                key={s.label}
+                href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white/70 hover:text-white transition-colors"
+                title={s.title}
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold text-white/50 hover:text-white hover:border-white/50 transition-colors"
               >
-                Facebook
+                {s.label}
               </a>
-              <a
-                href="https://instagram.com/etnolyga"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-white/70 hover:text-white transition-colors"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://youtube.com/@etnolyga"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-white/70 hover:text-white transition-colors"
-              >
-                YouTube
-              </a>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-          <p className="text-xs text-white/30">© 2026 Lietuvos etnosporto komitetas</p>
-          <div className="flex gap-6">
-            {[
-              { href: '/', label: 'Pradžia' },
-              { href: '/kontaktai', label: 'Kontaktai' },
-              { href: '/naujienos', label: 'Naujienos' },
-            ].map((link) => (
-              <Link key={link.href} href={link.href} className="text-xs text-white/40 hover:text-white/70 transition-colors">
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        {/* ETN♦LYGA logo centred at bottom */}
+        <div className="mt-6 pt-6 border-t border-white/10 flex justify-center">
+          <Link href="/" className="text-center leading-none group">
+            <div className="font-display text-xl font-semibold tracking-[0.2em] text-white group-hover:text-white/80 transition-colors">
+              ETN<span className="text-green-light">♦</span>
+            </div>
+            <div className="font-display text-xl font-semibold tracking-[0.2em] text-white/45 group-hover:text-white/35 transition-colors -mt-0.5">
+              LYGA
+            </div>
+          </Link>
         </div>
       </div>
     </footer>

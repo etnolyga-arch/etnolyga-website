@@ -2,11 +2,11 @@ import Button from '@/components/Button';
 import FolkPattern from '@/components/FolkPattern';
 
 const upcomingTeams = [
-  { name: '„už Joną"', school: 'Jono Basanavičiaus gimnazija' },
-  { name: '„Ballerina Cappuccina"', school: 'Žirmūnų gimnazija' },
-  { name: '„Septyniese"', school: 'Simono Daukanto gimnazija' },
-  { name: '„Basomis"', school: 'Šv. Kristoforo gimnazija' },
-  { name: '„Vazhiuojam"', school: 'Tuskulėnų gimnazija' },
+  { name: '„Už Joną“', school: 'Jono Basanavičiaus gimnazija', bg: ['#0d2d1c', '#1a4a2e'] },
+  { name: '„Ballerina Cappuccina“', school: 'Žirmūnų gimnazija', bg: ['#1a3d28', '#2d6040'] },
+  { name: '„Septyniese“', school: 'Simono Daukanto gimnazija', bg: ['#0a2418', '#162f20'] },
+  { name: '„Basomis“', school: 'Šv. Kristoforo gimnazija', bg: ['#153122', '#1e4530'] },
+  { name: '„Vazhiuojam“', school: 'Tuskulėnų gimnazija', bg: ['#0f2c1e', '#1b3d28'] },
 ];
 
 export default function Home() {
@@ -39,13 +39,20 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-widest text-graphite/40 mb-5">
             Susitinka 1-o pogrūpio komandos:
           </p>
-          <div className="mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-10">
             {upcomingTeams.map((team, i) => (
-              <div key={team.name} className="flex items-center gap-4 py-3 border-b border-graphite/10">
-                <span className="text-xs text-graphite/30 w-4">{i + 1}</span>
-                <div>
-                  <span className="text-sm font-semibold text-graphite">Komanda {team.name}</span>
-                  <span className="text-sm text-graphite/55"> — {team.school}</span>
+              <div
+                key={team.name}
+                className="relative h-44 overflow-hidden"
+                style={{ background: `linear-gradient(145deg, ${team.bg[0]} 0%, ${team.bg[1]} 100%)` }}
+              >
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute top-3 right-3 w-7 h-7 rounded-full border border-white/25 bg-white/10 flex items-center justify-center">
+                  <span className="text-[9px] font-bold text-white/50">{i + 1}</span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-white font-semibold text-sm leading-snug">Komanda {team.name}</p>
+                  <p className="text-white/60 text-[11px] mt-0.5 leading-tight">{team.school}</p>
                 </div>
               </div>
             ))}
@@ -106,24 +113,34 @@ export default function Home() {
         </div>
       </section>
 
+      <FolkPattern />
+
       {/* Sponsors */}
       <section className="py-20 px-4 bg-green-dark text-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-2xl font-semibold mb-8 text-green-light">Rėmėjai</h2>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-6 mb-16">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-14 bg-white/10 border border-white/20 flex items-center justify-center text-white/25 text-xs">
-                Rėmėjas {i + 1}
-              </div>
-            ))}
+          <div className="flex items-center gap-3 mb-16">
+            <button className="flex-shrink-0 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors text-lg leading-none">‹</button>
+            <div className="flex-1 flex gap-3">
+              {['DLG', 'CO', '–', '–', '–'].map((name, i) => (
+                <div key={i} className="flex-1 h-14 bg-white/10 border border-white/10 flex items-center justify-center text-white/30 text-xs font-semibold min-w-0">
+                  {name}
+                </div>
+              ))}
+            </div>
+            <button className="flex-shrink-0 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors text-lg leading-none">›</button>
           </div>
           <h2 className="font-display text-2xl font-semibold mb-8 text-green-light">Partneriai</h2>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-14 bg-white/10 border border-white/20 flex items-center justify-center text-white/25 text-xs">
-                Partneris {i + 1}
-              </div>
-            ))}
+          <div className="flex items-center gap-3">
+            <button className="flex-shrink-0 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors text-lg leading-none">‹</button>
+            <div className="flex-1 flex gap-3">
+              {['Jūrų', '–', '–', '–'].map((name, i) => (
+                <div key={i} className="flex-1 h-14 bg-white/10 border border-white/10 flex items-center justify-center text-white/30 text-xs font-semibold min-w-0">
+                  {name}
+                </div>
+              ))}
+            </div>
+            <button className="flex-shrink-0 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors text-lg leading-none">›</button>
           </div>
         </div>
       </section>
