@@ -14,28 +14,25 @@ const teamsList = [
 export default function Home() {
   return (
     <div>
-      <section className="relative min-h-[640px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[640px] overflow-hidden">
         <Image src="/figma-assets/fill-37-72c6117f08c0.png" alt="Ripkos rungtynės" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 text-center px-4">
-          <h1
-            className="font-display text-[100px] md:text-[160px] font-semibold tracking-[0.06em] leading-none"
-            style={{
-              backgroundImage: "url('/figma-assets/folk-pattern.png')",
-              backgroundSize: '96px auto',
-              backgroundColor: '#ffffff',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-              imageRendering: 'pixelated',
-            }}
-          >
-            ETN♦LYGA
-          </h1>
-          <p className="mt-6 text-sm text-white/65 max-w-lg mx-auto leading-relaxed">
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <Image
+            src="/figma-assets/logo-horizontal.png"
+            alt="ETN♦LYGA"
+            width={960}
+            height={67}
+            className="w-full max-w-[960px] h-auto"
+            style={{ imageRendering: 'pixelated' }}
+            priority
+          />
+        </div>
+        <div className="absolute bottom-12 left-0 right-0 text-center z-10">
+          <p className="text-sm text-white/65 max-w-lg mx-auto leading-relaxed">
             Iniciatyva, siekianti inovatyviai plėtoti Lietuvos tradicinius sporto žaidimus
           </p>
-          <div className="mt-10 text-white/40 text-2xl select-none">↓</div>
+          <div className="mt-6 text-white/40 text-2xl select-none">↓</div>
         </div>
       </section>
       <FolkPattern />
