@@ -27,10 +27,28 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-3 gap-4">
         {/* Logo */}
         <Link href="/" className="flex flex-col items-start leading-none flex-shrink-0">
-          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white leading-tight">
-            ETN<span className="text-green-light">♦</span>
+          <span
+            className="font-display text-[15px] font-semibold tracking-[0.15em] leading-tight"
+            style={{
+              backgroundImage: 'repeating-conic-gradient(#ffffff 0 90deg, #204C36 90deg 180deg)',
+              backgroundSize: '6px 6px',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+            }}
+          >
+            ETN♦
           </span>
-          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white/55 leading-tight">
+          <span
+            className="font-display text-[15px] font-semibold tracking-[0.15em] leading-tight opacity-60"
+            style={{
+              backgroundImage: 'repeating-conic-gradient(#ffffff 0 90deg, #204C36 90deg 180deg)',
+              backgroundSize: '6px 6px',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+            }}
+          >
             LYGA
           </span>
         </Link>
