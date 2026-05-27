@@ -3,57 +3,67 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-const navLinks = [
+const mainLinks = [
   { href: '/', label: 'Pradžia' },
   { href: '/tvarkarastis', label: 'Tvarkaraštis' },
   { href: '/turnyrine-lentele', label: 'Turnyrinė lentelė' },
   { href: '/komandos', label: 'Komandos' },
   { href: '/apie-ripka', label: 'Apie ripką' },
+];
+
+const sideLinks = [
   { href: '/naujienos', label: 'Naujienos' },
   { href: '/kontaktai', label: 'Kontaktai' },
 ];
 
-const sports = ['RIPKA', 'KYLA', 'RISTYNĖS'];
+const allLinks = [...mainLinks, ...sideLinks];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSport, setActiveSport] = useState('RIPKA');
   const pathname = usePathname();
 
   return (
     <nav className="bg-green-dark text-white sticky top-0 z-50">
-      {/* Sport selector */}
-      <div className="max-w-6xl mx-auto px-4 flex items-center gap-6 py-2 border-b border-white/10">
-        {sports.map((sport) => (
-          <button
-            key={sport}
-            onClick={() => setActiveSport(sport)}
-            className={`text-[10px] font-semibold tracking-widest uppercase transition-opacity ${
-              activeSport === sport ? 'opacity-100 text-green-light' : 'opacity-40 text-white'
-            }`}
-          >
-            {sport}
-          </button>
-        ))}
-      </div>
-
-      {/* Main nav */}
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-3">
-        <Link href="/" className="flex flex-col items-start leading-none">
-          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white leading-tight">ETN<span className="text-green-light">♦</span></span>
-          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white/55 leading-tight">LYGA</span>
+      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-3 gap-4">
+        {/* Logo */}
+        <Link href="/" className="flex flex-col items-start leading-none flex-shrink-0">
+          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white leading-tight">
+            ETN<span className="text-green-light">♦</span>
+          </span>
+          <span className="font-display text-[15px] font-semibold tracking-[0.15em] text-white/55 leading-tight">
+            LYGA
+          </span>
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => {
+        {/* Desktop center links */}
+        <div className="hidden md:flex items-center gap-5 flex-1">
+          <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-white mr-1">RIPKA</span>
+          {mainLinks.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`text-[11px] tracking-wide transition-colors ${
-                  active ? 'text-green-light font-bold' : 'text-white/75 hover:text-white font-normal'
+                  active ? 'text-green-light font-semibold' : 'text-white/70 hover:text-white font-normal'
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Desktop right links */}
+        <div className="hidden md:flex items-center gap-5 flex-shrink-0">
+          {sideLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[11px] tracking-wide transition-colors ${
+                  active ? 'text-green-light font-semibold' : 'text-white/70 hover:text-white font-normal'
                 }`}
               >
                 {link.label}
@@ -78,7 +88,7 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-green-dark border-t border-white/10">
           <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
+            {allLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

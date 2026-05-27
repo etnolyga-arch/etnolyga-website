@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import FolkPattern from './FolkPattern';
 
@@ -12,9 +13,9 @@ const navLinks = [
 ];
 
 const socials = [
-  { label: 'FB', href: 'https://facebook.com/etnolyga', title: 'Facebook' },
-  { label: 'IG', href: 'https://instagram.com/etnolyga', title: 'Instagram' },
-  { label: 'YT', href: 'https://youtube.com/@etnolyga', title: 'YouTube' },
+  { label: 'Facebook', href: 'https://facebook.com/etnolyga', icon: '/figma-assets/frame-7--Facebook_icon.png', title: 'Facebook' },
+  { label: 'Instagram', href: 'https://instagram.com/etnolyga', icon: '/figma-assets/frame-2--Instagram_icon.png', title: 'Instagram' },
+  { label: 'YouTube', href: 'https://youtube.com/@etnolyga', icon: '/figma-assets/frame-3--Youtube_icon.png', title: 'YouTube' },
 ];
 
 export default function Footer() {
@@ -48,9 +49,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={s.title}
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold text-white/50 hover:text-white hover:border-white/50 transition-colors"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white/50 transition-colors overflow-hidden"
               >
-                {s.label}
+                <Image src={s.icon} alt={s.title} width={40} height={40} className="w-full h-full object-contain" />
               </a>
             ))}
           </div>

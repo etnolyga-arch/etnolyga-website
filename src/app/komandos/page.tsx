@@ -1,25 +1,26 @@
-import Button from '@/components/Button';
-import FolkPattern from '@/components/FolkPattern';
-import Link from 'next/link';
+﻿import Image from "next/image";
+import Link from "next/link";
+import FolkPattern from "@/components/FolkPattern";
+import SponsorsRow from "@/components/SponsorsRow";
 
 const teams = [
-  { slug: 'uz-jona', name: '„už Joną"', school: 'Jono Basanavičiaus gimnazija' },
-  { slug: 'ballerina-cappuccina', name: '„Ballerina Cappuccina"', school: 'Žirmūnų gimnazija' },
-  { slug: 'basomis', name: '„Basomis"', school: 'Šv. Kristoforo gimnazija' },
-  { slug: 'septyniese', name: '„Septyniese"', school: 'Simono Daukanto gimnazija' },
-  { slug: 'vazhiuojam', name: '„Vazhiuojam"', school: 'Tuskulėnų gimnazija' },
+  { slug: "uz-jona", name: "„Už Joną\"", school: "Jono Basanavičiaus gimnazija", logo: "/figma-assets/fill-51-b1709e66d56c.png", photo: "/figma-assets/fill-18-36ad8b171802.png" },
+  { slug: "ballerina-cappuccina", name: "„Ballerina Cappuccina\"", school: "Žirmūnų gimnazija", logo: "/figma-assets/fill-50-afcb95bb3939.png", photo: "/figma-assets/fill-20-3a15b0153bfe.png" },
+  { slug: "basomis", name: "„Basomis\"", school: "Šv. Kristoforo gimnazija", logo: "/figma-assets/fill-28-5cc1867c0b1b.png", photo: "/figma-assets/fill-80-fce1b546192c.png" },
+  { slug: "septyniese", name: "„Septyniese\"", school: "Simono Daukanto gimnazija", logo: "/figma-assets/fill-4-0c2ce59a681e.png", photo: "/figma-assets/fill-36-725adf135808.png" },
+  { slug: "vazhiuojam", name: "„Vazhiuojam\"", school: "Tuskulėnų gimnazija", logo: "/figma-assets/fill-14-2f58aff4c3d8.png", photo: "/figma-assets/fill-24-4d93f8da3b7d.png" },
 ];
 
 export default function KomandosPage() {
   return (
     <div>
-      <section className="bg-green-dark text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p className="text-xs tracking-widest uppercase text-green-light mb-3">Ripka</p>
-            <h1 className="font-display text-4xl md:text-5xl font-semibold">Komandos</h1>
-          </div>
-          <div className="flex items-center gap-2 text-xs">
+      {/* Hero */}
+      <section className="relative min-h-[240px] flex items-end overflow-hidden">
+        <Image src="/figma-assets/fill-43-8e135aa9a847.png" alt="Komandos" fill className="object-cover object-top" priority />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24 flex items-end justify-between">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Komandos</h1>
+          <div className="flex items-center gap-2 text-xs pb-1">
             <span className="text-white/50">Sezonas:</span>
             <span className="border border-green-light text-green-light px-3 py-1">2025–2026 m.</span>
           </div>
@@ -27,30 +28,38 @@ export default function KomandosPage() {
       </section>
       <FolkPattern />
 
-      <section className="py-16 px-4 bg-white">
+      <section className="bg-white py-2 px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 gap-1">
             {teams.map((team) => (
               <Link
                 key={team.slug}
-                href={`/komandos/${team.slug}`}
-                className="block group border border-graphite/10 p-6 hover:border-green-dark transition-colors"
+                href={"/komandos/" + team.slug}
+                className="relative block overflow-hidden group"
+                style={{ aspectRatio: "4/3" }}
               >
-                <div className="h-20 bg-green-light/20 mb-4 flex items-center justify-center text-green-dark/30 text-xs">
-                  [Komandos logotipas]
+                <Image src={team.photo} alt={team.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/80 bg-white">
+                      <Image src={team.logo} alt={team.school} width={36} height={36} className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white leading-tight">Komanda {team.name}</p>
+                      <p className="text-[11px] text-white/65">{team.school}</p>
+                    </div>
+                  </div>
+                  <span className="text-white/70 text-xl font-bold group-hover:text-white transition-colors">↗</span>
                 </div>
-                <h2 className="font-display text-xl font-semibold text-graphite group-hover:text-green-dark transition-colors">
-                  Komanda {team.name}
-                </h2>
-                <p className="text-xs text-graphite/50 mt-1">{team.school}</p>
-                <p className="text-xs text-green-dark font-semibold tracking-wider uppercase mt-4">
-                  Žiūrėti komandą →
-                </p>
               </Link>
             ))}
           </div>
         </div>
       </section>
+
+      <FolkPattern />
+      <SponsorsRow />
     </div>
   );
 }

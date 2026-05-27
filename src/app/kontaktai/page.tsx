@@ -1,79 +1,57 @@
-import FolkPattern from '@/components/FolkPattern';
-
-const contacts = [
-  { label: 'El. paštas', value: 'etnosportas@gmail.com', href: 'mailto:etnosportas@gmail.com' },
-  { label: 'Tel. numeris', value: '+37067992665', href: 'tel:+37067992665' },
-  { label: 'Darbo laikas', value: 'I–V 8:00–17:00', href: null },
-];
-
-const socials = [
-  { label: 'Facebook', value: 'facebook.com/etnolyga', href: 'https://facebook.com/etnolyga' },
-  { label: 'Instagram', value: 'instagram.com/etnolyga', href: 'https://instagram.com/etnolyga' },
-  { label: 'YouTube', value: 'youtube.com/@etnolyga', href: 'https://youtube.com/@etnolyga' },
-];
+﻿import Image from "next/image";
+import FolkPattern from "@/components/FolkPattern";
+import SponsorsRow from "@/components/SponsorsRow";
 
 export default function KontaktaiPage() {
   return (
     <div>
-      <section className="bg-green-dark text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-green-light mb-3">Etnolyga</p>
-          <h1 className="font-display text-4xl md:text-5xl font-semibold">Kontaktai</h1>
+      {/* Hero */}
+      <section className="relative min-h-[240px] flex items-end overflow-hidden">
+        <Image src="/figma-assets/fill-1-0493a574f954.png" alt="Kontaktai" fill className="object-cover object-top" priority />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Kontaktai</h1>
         </div>
       </section>
       <FolkPattern />
 
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
-          {/* Contact info */}
-          <div>
-            <h2 className="font-display text-2xl font-semibold text-graphite mb-8">
-              Lietuvos etnosporto komitetas
-            </h2>
-            <div className="space-y-6">
-              {contacts.map((c) => (
-                <div key={c.label} className="border-b border-graphite/10 pb-4">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-graphite/40 mb-1">{c.label}</p>
-                  {c.href ? (
-                    <a href={c.href} className="text-sm font-semibold text-green-dark hover:underline">
-                      {c.value}
-                    </a>
-                  ) : (
-                    <p className="text-sm font-semibold text-graphite">{c.value}</p>
-                  )}
-                </div>
-              ))}
+      {/* Contact info + photo */}
+      <section className="bg-white py-16 px-4">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
+          <div className="md:col-span-2 grid grid-cols-2 gap-x-12 gap-y-8">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">El. paštas</p>
+              <a href="mailto:etnosportas@gmail.com" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">etnosportas@gmail.com</a>
             </div>
-
-            <div className="mt-10">
-              <h3 className="font-display text-xl font-semibold text-graphite mb-6">Socialiniai tinklai</h3>
-              <div className="space-y-4">
-                {socials.map((s) => (
-                  <div key={s.label} className="border-b border-graphite/10 pb-4">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-graphite/40 mb-1">{s.label}</p>
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-green-dark hover:underline">
-                      {s.value}
-                    </a>
-                  </div>
-                ))}
-              </div>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Facebook</p>
+              <a href="https://facebook.com/etnolyga" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">facebook.com/etnolyga</a>
+            </div>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Tel. numeris</p>
+              <a href="tel:+37067992665" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">+37067992665</a>
+            </div>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Instagram</p>
+              <a href="https://instagram.com/etnolyga" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">instagram.com/etnolyga</a>
+            </div>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Darbo laikas</p>
+              <p className="text-sm font-semibold text-graphite">I–V – 8:00–17:00</p>
+            </div>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Youtube</p>
+              <a href="https://youtube.com/@etnolyga" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">youtube.com/@etnolyga</a>
             </div>
           </div>
-
-          {/* Sidebar / Map placeholder */}
-          <div className="space-y-6">
-            <div className="h-64 bg-graphite/5 border border-graphite/10 flex items-center justify-center text-graphite/25 text-sm">
-              [Žemėlapis]
-            </div>
-            <div className="bg-green-light/25 border border-green-light p-6">
-              <h3 className="font-display text-lg font-semibold text-graphite mb-3">Apie organizaciją</h3>
-              <p className="text-sm text-graphite/70 leading-relaxed">
-                Lietuvos etnosporto komitetas (LEK) – 2019 m. etnosporto entuziastų įkurta organizacija, siekianti puoselėti ir populiarinti lietuviškus tradicinius sporto žaidimus.
-              </p>
-            </div>
+          <div className="relative min-h-[280px]">
+            <Image src="/figma-assets/fill-36-725adf135808.png" alt="Etnolyga komanda" fill className="object-cover" />
           </div>
         </div>
       </section>
+
+      <SponsorsRow />
+      <FolkPattern />
     </div>
   );
 }
