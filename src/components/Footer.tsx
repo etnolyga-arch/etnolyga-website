@@ -60,28 +60,10 @@ export default function Footer() {
         {/* ETN♦LYGA logo centred at bottom */}
         <div className="mt-6 pt-6 border-t border-white/10 flex justify-center">
           <Link href="/" className="text-center leading-none">
-            <div
-              className="font-display text-xl font-semibold tracking-[0.2em] leading-tight"
-              style={{
-                backgroundImage: 'repeating-conic-gradient(#ffffff 0 90deg, #204C36 90deg 180deg)',
-                backgroundSize: '6px 6px',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-              }}
-            >
-              ETN♦
+            <div className="font-display text-xl font-semibold tracking-[0.2em] leading-tight text-white">
+              ETN<span className="text-green-light">♦</span>
             </div>
-            <div
-              className="font-display text-xl font-semibold tracking-[0.2em] leading-tight opacity-55 -mt-0.5"
-              style={{
-                backgroundImage: 'repeating-conic-gradient(#ffffff 0 90deg, #204C36 90deg 180deg)',
-                backgroundSize: '6px 6px',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-              }}
-            >
+            <div className="font-display text-xl font-semibold tracking-[0.2em] leading-tight text-white/55 -mt-0.5">
               LYGA
             </div>
           </Link>
