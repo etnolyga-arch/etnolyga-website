@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col antialiased">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-12">{children}</main>
         <Footer />
       </body>
     </html>

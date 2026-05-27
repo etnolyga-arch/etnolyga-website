@@ -21,7 +21,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="bg-green-dark text-white mt-auto">
-      <FolkPattern dark />
+      <FolkPattern straddle />
       <div className="max-w-6xl mx-auto px-6 pt-10 pb-10">
         <div className="flex flex-col md:flex-row md:justify-between gap-8 mb-8">
           {/* Sport label + nav links */}
