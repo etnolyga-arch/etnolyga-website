@@ -3,26 +3,26 @@ import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const teams = [
-  { name: "„Už Joną"", school: "Jono Basanavičiaus gimnazija", logo: "/figma-assets/fill-51-b1709e66d56c.png" },
-  { name: "„Ballerina Cappuccina"", school: "Žirmūnų gimnazija", logo: "/figma-assets/fill-50-afcb95bb3939.png" },
-  { name: "„Septyniese"", school: "Simono Daukanto gimnazija", logo: "/figma-assets/fill-4-0c2ce59a681e.png" },
-  { name: "„Basomis"", school: "Šv. Kristoforo gimnazija", logo: "/figma-assets/fill-28-5cc1867c0b1b.png" },
-  { name: "„Vazhiuojam"", school: "Tuskulėnų gimnazija", logo: "/figma-assets/fill-14-2f58aff4c3d8.png" },
+  { name: '„Už Joną"', school: "Jono Basanavičiaus gimnazija", logo: "/figma-assets/fill-51-b1709e66d56c.png" },
+  { name: '„Ballerina Cappuccina"', school: "Žirmūnų gimnazija", logo: "/figma-assets/fill-50-afcb95bb3939.png" },
+  { name: '„Septyniese"', school: "Simono Daukanto gimnazija", logo: "/figma-assets/fill-4-0c2ce59a681e.png" },
+  { name: '„Basomis"', school: "Šv. Kristoforo gimnazija", logo: "/figma-assets/fill-28-5cc1867c0b1b.png" },
+  { name: '„Vazhiuojam"', school: "Tuskulėnų gimnazija", logo: "/figma-assets/fill-14-2f58aff4c3d8.png" },
 ];
 
 const group1 = [
-  { team: "„Už Joną\"", logo: "/figma-assets/fill-51-b1709e66d56c.png", school: "Jono Basanavičiaus gimnazija", wins: 4, draws: 0, losses: 0, points: 12 },
-  { team: "„Ballerina Cappuccina\"", logo: "/figma-assets/fill-50-afcb95bb3939.png", school: "Žirmūnų gimnazija", wins: 3, draws: 1, losses: 0, points: 10 },
-  { team: "„Septyniese\"", logo: "/figma-assets/fill-4-0c2ce59a681e.png", school: "Simono Daukanto gimnazija", wins: 2, draws: 0, losses: 2, points: 6 },
-  { team: "„Basomis\"", logo: "/figma-assets/fill-28-5cc1867c0b1b.png", school: "Šv. Kristoforo gimnazija", wins: 1, draws: 0, losses: 3, points: 3 },
-  { team: "„Vazhiuojam\"", logo: "/figma-assets/fill-14-2f58aff4c3d8.png", school: "Tuskulėnų gimnazija", wins: 0, draws: 1, losses: 3, points: 1 },
+  { team: '„Už Joną\"', logo: "/figma-assets/fill-51-b1709e66d56c.png", school: "Jono Basanavičiaus gimnazija", wins: 4, draws: 0, losses: 0, points: 12 },
+  { team: '„Ballerina Cappuccina\"', logo: "/figma-assets/fill-50-afcb95bb3939.png", school: "Žirmūnų gimnazija", wins: 3, draws: 1, losses: 0, points: 10 },
+  { team: '„Septyniese\"', logo: "/figma-assets/fill-4-0c2ce59a681e.png", school: "Simono Daukanto gimnazija", wins: 2, draws: 0, losses: 2, points: 6 },
+  { team: '„Basomis\"', logo: "/figma-assets/fill-28-5cc1867c0b1b.png", school: "Šv. Kristoforo gimnazija", wins: 1, draws: 0, losses: 3, points: 3 },
+  { team: '„Vazhiuojam\"', logo: "/figma-assets/fill-14-2f58aff4c3d8.png", school: "Tuskulėnų gimnazija", wins: 0, draws: 1, losses: 3, points: 1 },
 ];
 
 const group2 = [
-  { team: "„Ąžuolai\"", logo: "/figma-assets/fill-51-b1709e66d56c.png", school: "Jono Basanavičiaus gimnazija", wins: 3, draws: 1, losses: 0, points: 10 },
-  { team: "„Liūtai\"", logo: "/figma-assets/fill-50-afcb95bb3939.png", school: "Žirmūnų gimnazija", wins: 3, draws: 0, losses: 1, points: 9 },
-  { team: "„Vanagai\"", logo: "/figma-assets/fill-4-0c2ce59a681e.png", school: "Simono Daukanto gimnazija", wins: 1, draws: 1, losses: 2, points: 4 },
-  { team: "„Pelėdžiukai\"", logo: "/figma-assets/fill-28-5cc1867c0b1b.png", school: "Šv. Kristoforo gimnazija", wins: 0, draws: 0, losses: 4, points: 0 },
+  { team: '„Ąžuolai\"', logo: "/figma-assets/fill-51-b1709e66d56c.png", school: "Jono Basanavičiaus gimnazija", wins: 3, draws: 1, losses: 0, points: 10 },
+  { team: '„Liūtai\"', logo: "/figma-assets/fill-50-afcb95bb3939.png", school: "Žirmūnų gimnazija", wins: 3, draws: 0, losses: 1, points: 9 },
+  { team: '„Vanagai\"', logo: "/figma-assets/fill-4-0c2ce59a681e.png", school: "Simono Daukanto gimnazija", wins: 1, draws: 1, losses: 2, points: 4 },
+  { team: '„Pelėdžiukai\"', logo: "/figma-assets/fill-28-5cc1867c0b1b.png", school: "Šv. Kristoforo gimnazija", wins: 0, draws: 0, losses: 4, points: 0 },
 ];
 
 function StandingsTable({ label, standings }: { label: string; standings: typeof group1 }) {
