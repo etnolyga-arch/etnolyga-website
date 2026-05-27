@@ -11,26 +11,20 @@ const teamsList = [
   { name: "\u201eVazhiuojam\u201c", school: "Tuskulėnų gimnazija", logo: "/figma-assets/fill-14-2f58aff4c3d8.png", slug: "vazhiuojam" },
 ];
 
-const newsItems = [
-  { slug: "etnozyaidynes-naisiuose", title: "Ketvirtosios etnožaidynės Naisiuose", date: "2025 m. liepos 10 d.", photo: "/figma-assets/fill-72-ef05760f73f6.png" },
-  { slug: "stovykla-trakuose", title: "Etnosporto stovykla Trakuose", date: "2025 m. rugpjūčio 3 d.", photo: "/figma-assets/fill-20-3a15b0153bfe.png" },
-  { slug: "nauja-sezona-prasideda", title: "Nauja 2025–2026 m. sezonas prasideda", date: "2025 m. rugsėjo 1 d.", photo: "/figma-assets/fill-80-fce1b546192c.png" },
-  { slug: "stovykla-trakuose", title: "Etnosporto stovykla Trakuose", date: "2025 m.", photo: "/figma-assets/fill-24-4d93f8da3b7d.png" },
-];
-
 export default function Home() {
   return (
     <div>
-      <section className="relative min-h-[540px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[640px] flex items-center justify-center overflow-hidden">
         <Image src="/figma-assets/fill-37-72c6117f08c0.png" alt="Ripkos rungtynės" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="font-display text-[72px] md:text-[112px] font-semibold tracking-[0.08em] text-white leading-none">
+          <h1 className="font-display text-[100px] md:text-[160px] font-semibold tracking-[0.06em] text-white leading-none">
             ETN<span className="text-green-light">♦</span>LYGA
           </h1>
-          <p className="mt-5 text-sm text-white/65 max-w-lg mx-auto leading-relaxed">
+          <p className="mt-6 text-sm text-white/65 max-w-lg mx-auto leading-relaxed">
             Iniciatyva, siekianti inovatyviai plėtoti Lietuvos tradicinius sporto žaidimus
           </p>
+          <div className="mt-10 text-white/40 text-2xl select-none">↓</div>
         </div>
       </section>
       <FolkPattern />
@@ -43,7 +37,7 @@ export default function Home() {
               <p className="text-sm text-graphite/70 leading-relaxed">Etnosporto lygą organizuoja Lietuvos etnosporto komitetas – 2019 m. įkurta organizacija, puoselėjanti lietuviškus tradicinius žaidimus.</p>
             </div>
             <div className="mt-8">
-              <div className="mb-6 overflow-hidden"><FolkPattern /></div>
+              <div className="w-44 mb-6 overflow-hidden"><FolkPattern rows={2} /></div>
               <Link href="/apie-ripka" className="inline-flex items-center gap-2 text-sm font-semibold text-green-dark hover:underline">Plačiau apie ripką ↗</Link>
             </div>
           </div>
@@ -90,21 +84,36 @@ export default function Home() {
       <section className="bg-white py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-3xl font-semibold text-graphite mb-8">Naujienos</h2>
-          <div className="grid grid-cols-2 gap-1 mb-2">
-            {newsItems.map((item, i) => (
-              <Link key={i} href={"/naujienos/" + item.slug} className="relative block overflow-hidden group" style={{ aspectRatio: "4/3" }}>
-                <Image src={item.photo} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-[11px] text-white/60 mb-1">{item.date}</p>
-                  <h3 className="text-sm font-semibold text-white leading-snug">{item.title}</h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="flex justify-end mt-1">
-            <Link href="/naujienos" className="inline-flex items-center gap-2 bg-green-light/30 border border-green-light px-6 py-3 text-xs font-semibold uppercase tracking-widest text-green-dark hover:bg-green-light transition-colors">
-              Daugiau naujienų ↗
+          <div className="grid grid-cols-2 gap-1">
+            {/* Top row — 2 tall cards */}
+            <Link href="/naujienos/etnozyaidynes-naisiuose" className="relative block overflow-hidden group" style={{ aspectRatio: '4/3' }}>
+              <Image src="/figma-assets/fill-72-ef05760f73f6.png" alt="Ketvirtosios etnožaidynės Naisiuose" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-[11px] text-white/60 mb-1">2025 m. liepos 10 d.</p>
+                <h3 className="text-sm font-semibold text-white leading-snug">Ketvirtosios etnožaidynės Naisiuose</h3>
+              </div>
+            </Link>
+            <Link href="/naujienos/stovykla-trakuose" className="relative block overflow-hidden group" style={{ aspectRatio: '4/3' }}>
+              <Image src="/figma-assets/fill-20-3a15b0153bfe.png" alt="Etnosporto stovykla Trakuose" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-[11px] text-white/60 mb-1">2025 m. rugpjūčio 3 d.</p>
+                <h3 className="text-sm font-semibold text-white leading-snug">Etnosporto stovykla Trakuose</h3>
+              </div>
+            </Link>
+            {/* Bottom row — 1 card + inline CTA */}
+            <Link href="/naujienos/nauja-sezona-prasideda" className="relative block overflow-hidden group" style={{ aspectRatio: '16/7' }}>
+              <Image src="/figma-assets/fill-80-fce1b546192c.png" alt="Nauja sezona prasideda" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-[11px] text-white/60 mb-1">2025 m. rugsėjo 1 d.</p>
+                <h3 className="text-sm font-semibold text-white leading-snug">Nauja 2025–2026 m. sezonas prasideda</h3>
+              </div>
+            </Link>
+            <Link href="/naujienos" style={{ aspectRatio: '16/7' }} className="flex items-center justify-between px-8 py-6 border border-green-light hover:bg-green-light/30 transition-colors">
+              <span className="font-display text-lg font-semibold text-green-dark">Daugiau naujienų</span>
+              <span className="text-green-dark text-xl font-bold">↗</span>
             </Link>
           </div>
         </div>
@@ -118,8 +127,8 @@ export default function Home() {
               <p className="text-sm text-graphite/70 leading-relaxed">Etnosporto lygą organizuoja Lietuvos etnosporto komitetas (LEK) – 2019 m. etnosporto entuziastų įkurta organizacija, siekianti puoselėti lietuviškus tradicinius žaidimus ir ugdyti jaunąją kartą tradicijų dvasia.</p>
             </div>
             <div className="mt-8">
-              <div className="mb-6 overflow-hidden"><FolkPattern /></div>
-              <Link href="/kontaktai" className="text-sm font-semibold text-green-dark hover:underline">Plačiau apie organizatorius →</Link>
+              <div className="w-44 mb-6 overflow-hidden"><FolkPattern rows={2} /></div>
+              <Link href="/kontaktai" className="text-sm font-semibold text-green-dark hover:underline">Plačiau apie organizatorius ↗</Link>
             </div>
           </div>
           <div className="relative min-h-[360px]">

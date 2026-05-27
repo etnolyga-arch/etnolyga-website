@@ -1,6 +1,8 @@
-export default function FolkPattern({ className = '', inverted = false }: { className?: string; inverted?: boolean }) {
+export default function FolkPattern({ className = '', inverted = false, rows = 1 }: { className?: string; inverted?: boolean; rows?: number }) {
   const bg = inverted ? '#BBDBBF' : '#204C36';
   const accent = inverted ? '#204C36' : '#BBDBBF';
+  const tileSize = 32;
+  const svgH = tileSize * rows;
 
   // Pixel diamond-cross motif — each unit is 4 px, tile is 32×32
   const pixels: [number, number][] = [
@@ -14,21 +16,23 @@ export default function FolkPattern({ className = '', inverted = false }: { clas
   ];
 
   return (
-    <div className={`w-full overflow-hidden h-8 ${className}`} aria-hidden="true">
+    <div className={`w-full overflow-hidden ${className}`} style={{ height: `${svgH}px` }} aria-hidden="true">
       <svg
-        viewBox="0 0 960 32"
+        viewBox={`0 0 960 ${svgH}`}
         preserveAspectRatio="xMidYMid slice"
         className="w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="960" height="32" fill={bg} />
-        {Array.from({ length: 30 }).map((_, tileIdx) => (
-          <g key={tileIdx} transform={`translate(${tileIdx * 32}, 0)`}>
-            {pixels.map(([px, py]) => (
-              <rect key={`${px}-${py}`} x={px * 4} y={py * 4} width={4} height={4} fill={accent} />
-            ))}
-          </g>
-        ))}
+        <rect width="960" height={svgH} fill={bg} />
+        {Array.from({ length: rows }).flatMap((_, tileY) =>
+          Array.from({ length: 30 }).map((_, tileX) => (
+            <g key={`${tileX}-${tileY}`} transform={`translate(${tileX * tileSize}, ${tileY * tileSize})`}>
+              {pixels.map(([px, py]) => (
+                <rect key={`${px}-${py}`} x={px * 4} y={py * 4} width={4} height={4} fill={accent} />
+              ))}
+            </g>
+          ))
+        )}
       </svg>
     </div>
   );
