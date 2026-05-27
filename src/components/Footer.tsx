@@ -60,12 +60,13 @@ export default function Footer() {
         {/* ETN♦LYGA logo centred at bottom */}
         <div className="mt-6 pt-6 border-t border-white/10 flex justify-center">
           <Link href="/" className="text-center leading-none">
-            <div className="font-display text-xl font-semibold tracking-[0.2em] leading-tight text-white">
-              ETN<span className="text-green-light">♦</span>
-            </div>
-            <div className="font-display text-xl font-semibold tracking-[0.2em] leading-tight text-white/55 -mt-0.5">
-              LYGA
-            </div>
+            <Image
+              src="/figma-assets/logo-vertical.png"
+              alt="ETN♦LYGA"
+              width={118}
+              height={64}
+              style={{ imageRendering: 'pixelated' }}
+            />
           </Link>
         </div>
       </div>

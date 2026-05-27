@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
@@ -26,13 +27,14 @@ export default function Navbar() {
     <nav className="bg-green-dark text-white sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-3 gap-4">
         {/* Logo */}
-        <Link href="/" className="flex flex-col items-start leading-none flex-shrink-0">
-          <span className="font-display text-[15px] font-semibold tracking-[0.15em] leading-tight text-white">
-            ETN<span className="text-green-light">♦</span>
-          </span>
-          <span className="font-display text-[15px] font-semibold tracking-[0.15em] leading-tight text-white/60">
-            LYGA
-          </span>
+        <Link href="/" className="flex-shrink-0">
+          <Image
+            src="/figma-assets/logo-vertical.png"
+            alt="ETN♦LYGA"
+            width={59}
+            height={32}
+            style={{ imageRendering: 'pixelated' }}
+          />
         </Link>
 
         {/* Desktop center links */}
