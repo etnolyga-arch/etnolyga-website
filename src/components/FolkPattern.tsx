@@ -1,24 +1,35 @@
-// Folk pattern tile: 32×32px, two 16px diagonal blocks.
-// Creates a clean alternating staircase: ■□/□■ repeating.
-const FOLK_SVG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect x='0' y='0' width='16' height='16' fill='%23204C36'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23204C36'/%3E%3C/svg%3E")`;
-
+// Renders folk-pattern.png (96×592px, marks at x=48..95) rotated 90° as a horizontal band
+// using an inline SVG <pattern>. The 96px-wide image is rotated -90° so its 592px height
+// becomes the horizontal tile width. Marks are centered vertically in the band.
 export default function FolkPattern({ className = '', inverted = false, rows = 1 }: { className?: string; inverted?: boolean; rows?: number }) {
-  const height = 32 * rows;
+  const h = 96 * rows;
+  const bgColor = inverted ? '#BBDBBF' : '#ffffff';
+  // After rotate(-90°): original 96×592 → visual 592×96. Tile width = 592 (original height).
+  const tileW = 592;
+  // With transform="translate(0, ty) rotate(-90)" applied right-to-left in SVG:
+  // pixel at (px, py) in image → band position (py, ty - px).
+  // Marks at px=48..95. Center marks in band: ty = h/2 + (48+95)/2 = h/2 + 71.5
+  const ty = Math.round(h / 2 + 71.5);
+  const patId = `fp-${h}-${inverted ? 'i' : 'n'}`;
 
   return (
-    <div
-      className={`w-full overflow-hidden ${className}`}
-      style={{
-        height: `${height}px`,
-        backgroundColor: inverted ? '#BBDBBF' : '#ffffff',
-        backgroundImage: FOLK_SVG,
-        backgroundSize: '32px 32px',
-        backgroundRepeat: 'repeat',
-        imageRendering: 'pixelated',
-      }}
-      aria-hidden="true"
-    />
+    <div className={`w-full ${className}`} style={{ height: `${h}px` }} aria-hidden="true">
+      <svg width="100%" height={h} style={{ display: 'block' }}>
+        <defs>
+          <pattern id={patId} x="0" y="0" width={tileW} height={h} patternUnits="userSpaceOnUse">
+            <rect width={tileW} height={h} fill={bgColor} />
+            <image
+              href="/figma-assets/folk-pattern.png"
+              width="96"
+              height="592"
+              transform={`translate(0, ${ty}) rotate(-90)`}
+              style={{ imageRendering: 'pixelated' } as React.CSSProperties}
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height={h} fill={`url(#${patId})`} />
+      </svg>
+    </div>
   );
 }
-
 
