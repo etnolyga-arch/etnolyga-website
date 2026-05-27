@@ -1,7 +1,13 @@
 // Renders the Figma horizontal folk ornament (357×112px) as a repeating band.
-export default function FolkPattern({ className = '', inverted = false, rows = 1 }: { className?: string; inverted?: boolean; rows?: number }) {
+// dark=true: white marks on dark green background (for use on the dark green footer)
+// inverted=true: dark marks on light green background (legacy)
+// default: dark marks on white background
+export default function FolkPattern({ className = '', inverted = false, dark = false, rows = 1 }: { className?: string; inverted?: boolean; dark?: boolean; rows?: number }) {
   const h = 96 * rows;
-  const bgColor = inverted ? '#BBDBBF' : '#ffffff';
+  const bgColor = dark ? '#204C36' : inverted ? '#BBDBBF' : '#ffffff';
+  const bgImage = dark
+    ? "url('/figma-assets/folk-ornament-h-inv.png')"
+    : "url('/figma-assets/folk-ornament-h.png')";
 
   return (
     <div
@@ -9,7 +15,7 @@ export default function FolkPattern({ className = '', inverted = false, rows = 1
       style={{
         height: `${h}px`,
         backgroundColor: bgColor,
-        backgroundImage: "url('/figma-assets/folk-ornament-h.png')",
+        backgroundImage: bgImage,
         backgroundRepeat: 'repeat-x',
         backgroundSize: 'auto 100%',
         backgroundPosition: 'left center',

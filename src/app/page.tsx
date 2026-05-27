@@ -1,6 +1,5 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const teamsList = [
@@ -35,7 +34,6 @@ export default function Home() {
           <div className="mt-6 text-white/40 text-2xl select-none">↓</div>
         </div>
       </section>
-      <FolkPattern />
       <section className="bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 items-stretch">
           <div className="py-16 px-8 md:px-10 flex flex-col justify-between">
@@ -45,7 +43,6 @@ export default function Home() {
               <p className="text-sm text-graphite/70 leading-relaxed">Etnosporto lygą organizuoja Lietuvos etnosporto komitetas – 2019 m. įkurta organizacija, puoselėjanti lietuviškus tradicinius žaidimus.</p>
             </div>
             <div className="mt-8">
-              <div className="w-44 mb-6 overflow-hidden"><FolkPattern rows={2} /></div>
               <Link href="/apie-ripka" className="inline-flex items-center gap-2 text-sm font-semibold text-green-dark hover:underline">Plačiau apie ripką ↗</Link>
             </div>
           </div>
@@ -54,7 +51,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <FolkPattern inverted />
       <section className="bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 items-stretch">
           <div className="py-16 px-8 md:px-10">
@@ -88,7 +84,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <FolkPattern />
       <section className="bg-white py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-3xl font-semibold text-graphite mb-8">Naujienos</h2>
@@ -126,7 +121,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <FolkPattern inverted />
       <section className="bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 items-stretch">
           <div className="py-16 px-8 md:px-10 flex flex-col justify-between">
@@ -135,7 +129,6 @@ export default function Home() {
               <p className="text-sm text-graphite/70 leading-relaxed">Etnosporto lygą organizuoja Lietuvos etnosporto komitetas (LEK) – 2019 m. etnosporto entuziastų įkurta organizacija, siekianti puoselėti lietuviškus tradicinius žaidimus ir ugdyti jaunąją kartą tradicijų dvasia.</p>
             </div>
             <div className="mt-8">
-              <div className="w-44 mb-6 overflow-hidden"><FolkPattern rows={2} /></div>
               <Link href="/kontaktai" className="text-sm font-semibold text-green-dark hover:underline">Plačiau apie organizatorius ↗</Link>
             </div>
           </div>
@@ -144,7 +137,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <FolkPattern />
       <SponsorsRow />
     </div>
   );
