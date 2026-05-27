@@ -10,6 +10,8 @@ export default function FolkPattern({ className = '', inverted = false, rows = 1
         backgroundImage: "url('/figma-assets/folk-pattern.png')",
         backgroundSize: '96px auto',
         backgroundRepeat: 'repeat-x',
+        backgroundPosition: '0 -32px',
+        imageRendering: 'pixelated',
       }}
       aria-hidden="true"
     />

@@ -18,15 +18,20 @@ export default function Home() {
         <Image src="/figma-assets/fill-37-72c6117f08c0.png" alt="Ripkos rungtynės" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-4">
-          <Image
-            src="/figma-assets/logo-horizontal.png"
-            alt="ETN♦LYGA"
-            width={960}
-            height={67}
-            className="w-[70%] max-w-[672px] h-auto"
-            style={{ imageRendering: 'pixelated' }}
-            priority
-          />
+          <h1
+            className="font-display text-[100px] md:text-[160px] font-semibold tracking-[0.06em] leading-none"
+            style={{
+              backgroundImage: "url('/figma-assets/folk-pattern.png')",
+              backgroundSize: '96px auto',
+              backgroundColor: '#ffffff',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              imageRendering: 'pixelated',
+            }}
+          >
+            ETN♦LYGA
+          </h1>
           <p className="mt-6 text-sm text-white/65 max-w-lg mx-auto leading-relaxed">
             Iniciatyva, siekianti inovatyviai plėtoti Lietuvos tradicinius sporto žaidimus
           </p>
