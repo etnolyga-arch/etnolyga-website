@@ -1,5 +1,4 @@
 import Button from '@/components/Button';
-import FolkPattern from '@/components/FolkPattern';
 
 const articles: Record<string, { title: string; date: string; body: string; variant: number }> = {
   'etnozyaidynes-naisiuose': {
@@ -66,9 +65,8 @@ export default async function NaujienosSlugPage({
           </h1>
         </div>
       </section>
-      <FolkPattern />
 
-      {/* Article body */}
+      {/* Article body */
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <article className="space-y-6">

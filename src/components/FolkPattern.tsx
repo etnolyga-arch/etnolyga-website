@@ -3,24 +3,27 @@
 // dark=true: white marks on dark green background
 // inverted=true: dark marks on light green background (legacy)
 // default: dark marks on white background
-export default function FolkPattern({ className = '', inverted = false, dark = false, straddle = false, rows = 1 }: { className?: string; inverted?: boolean; dark?: boolean; straddle?: boolean; rows?: number }) {
+export default function FolkPattern({ className = '', inverted = false, dark = false, straddle = false, offset =7, rows = 1 }: { className?: string; inverted?: boolean; dark?: boolean; straddle?: boolean; offset?: number; rows?: number }) {
   if (straddle) {
-    const tileH = 76;
-    const half = tileH / 2;
+    const tileH = 66;
+    const half = tileH / 2; // each div = 33px; top shows rows 0-33, bottom shows rows 33-66 of the image
+    // offset > 0 → split line moves up (more white area); offset < 0 → split line moves down (more green area)
+    const topH = half + offset;
+    const botH = half - offset;
     const base = { backgroundRepeat: 'repeat-x' as const, backgroundSize: `auto ${tileH}px` };
     return (
       <div
         className={`w-full ${className}`}
-        style={{ marginTop: `-${half}px`, position: 'relative', zIndex: 10 }}
+        style={{ marginTop: `-${topH}px`, position: 'relative', zIndex: 10 }}
         aria-hidden="true"
       >
-        <div style={{ height: half, backgroundColor: '#ffffff', backgroundImage: "url('/figma-assets/folk-ornament-h.png')", backgroundPosition: 'left top', ...base }} />
-        <div style={{ height: half, backgroundColor: '#204C36', backgroundImage: "url('/figma-assets/folk-ornament-h-inv.png')", backgroundPosition: 'left bottom', ...base }} />
+        <div style={{ height: topH, backgroundColor: '#ffffff', backgroundImage: "url('/figma-assets/folk-ornament-h.png')", backgroundPosition: 'left top', ...base }} />
+        <div style={{ height: botH, backgroundColor: '#204C36', backgroundImage: "url('/figma-assets/folk-ornament-h-inv.png')", backgroundPosition: 'left bottom', ...base }} />
       </div>
     );
   }
 
-  const h = 76 * rows;
+  const h = 66 * rows;
   const bgColor = dark ? '#204C36' : inverted ? '#BBDBBF' : '#ffffff';
   const bgImage = dark
     ? "url('/figma-assets/folk-ornament-h-inv.png')"

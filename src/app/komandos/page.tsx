@@ -1,6 +1,5 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const teams = [
@@ -26,7 +25,6 @@ export default function KomandosPage() {
           </div>
         </div>
       </section>
-      <FolkPattern />
 
       <section className="bg-white py-2 px-4">
         <div className="max-w-5xl mx-auto">
@@ -58,7 +56,6 @@ export default function KomandosPage() {
         </div>
       </section>
 
-      <FolkPattern />
       <SponsorsRow />
     </div>
   );

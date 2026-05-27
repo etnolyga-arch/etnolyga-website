@@ -1,5 +1,4 @@
 ﻿import Image from "next/image";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const teams = [
@@ -109,7 +108,6 @@ export default function TurnyrineLetelePage() {
           </div>
         </div>
       </section>
-      <FolkPattern />
 
       <section className="bg-white py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -126,7 +124,6 @@ export default function TurnyrineLetelePage() {
       </section>
 
       <SponsorsRow />
-      <FolkPattern />
     </div>
   );
 }

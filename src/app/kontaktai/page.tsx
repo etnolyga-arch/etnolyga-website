@@ -1,5 +1,4 @@
 ﻿import Image from "next/image";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 export default function KontaktaiPage() {
@@ -13,9 +12,8 @@ export default function KontaktaiPage() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Kontaktai</h1>
         </div>
       </section>
-      <FolkPattern />
 
-      {/* Contact info + photo */}
+      {/* Contact info + photo */
       <section className="bg-white py-16 px-4">
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2 grid grid-cols-2 gap-x-12 gap-y-8">
@@ -51,7 +49,6 @@ export default function KontaktaiPage() {
       </section>
 
       <SponsorsRow />
-      <FolkPattern />
     </div>
   );
 }

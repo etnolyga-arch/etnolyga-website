@@ -1,6 +1,5 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const news = [
@@ -23,7 +22,6 @@ export default function NaujienosPage() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Naujienos</h1>
         </div>
       </section>
-      <FolkPattern />
 
       <section className="bg-white py-12 px-4">
         <div className="max-w-5xl mx-auto">
@@ -48,7 +46,6 @@ export default function NaujienosPage() {
         </div>
       </section>
 
-      <FolkPattern />
       <SponsorsRow />
     </div>
   );

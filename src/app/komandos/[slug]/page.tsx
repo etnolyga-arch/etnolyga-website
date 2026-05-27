@@ -1,5 +1,4 @@
 import Button from '@/components/Button';
-import FolkPattern from '@/components/FolkPattern';
 
 type Player = { name: string; role: 'Puolėjas' | 'Gynėjas' };
 
@@ -66,7 +65,6 @@ export default async function KomandaPage({
           <h1 className="font-display text-4xl md:text-5xl font-semibold">Komanda {team.name}</h1>
         </div>
       </section>
-      <FolkPattern />
 
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-10">

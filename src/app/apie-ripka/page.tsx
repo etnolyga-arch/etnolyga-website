@@ -1,6 +1,5 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const timeline = [
@@ -21,9 +20,8 @@ export default function ApieRipkaPage() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Ripka (ritinis)</h1>
         </div>
       </section>
-      <FolkPattern />
 
-      {/* Game description */}
+      {/* Game description */
       <section className="bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 items-stretch">
           <div className="py-16 px-8 md:px-10">
@@ -40,8 +38,6 @@ export default function ApieRipkaPage() {
         </div>
       </section>
 
-      <FolkPattern inverted />
-
       {/* History */}
       <section className="bg-green-dark py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -57,8 +53,6 @@ export default function ApieRipkaPage() {
         </div>
       </section>
 
-      <FolkPattern />
-
       {/* Ripka today */}
       <section className="bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 items-stretch">
@@ -72,7 +66,6 @@ export default function ApieRipkaPage() {
               <p className="text-sm text-graphite/75 leading-relaxed">Federacija vienija daugiau nei 20 klubų visoje Lietuvoje ir kasmet rengia Lietuvos čempionatą.</p>
             </div>
             <div className="mt-8">
-              <FolkPattern />
               <div className="mt-6">
                 <Link href="https://www.lrsf.lt" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-green-dark hover:underline">
                   Plačiau apie federaciją ↗
@@ -82,8 +75,6 @@ export default function ApieRipkaPage() {
           </div>
         </div>
       </section>
-
-      <FolkPattern inverted />
 
       {/* Rules */}
       <section className="bg-white">
@@ -95,7 +86,6 @@ export default function ApieRipkaPage() {
               <p className="text-sm text-graphite/75 leading-relaxed">Ripkoje draudžiama: žaidėjus stumti, laikyti, naudoti lazdelę kaip ginklą, skraidinti ripką per tam tikrą aukštį.</p>
             </div>
             <div className="mt-8">
-              <FolkPattern />
               <div className="mt-6">
                 <Link href="https://www.lrsf.lt/taisykles" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-green-dark hover:underline">
                   Ripkos taisyklės ↗
@@ -109,7 +99,6 @@ export default function ApieRipkaPage() {
         </div>
       </section>
 
-      <FolkPattern />
       <SponsorsRow />
     </div>
   );

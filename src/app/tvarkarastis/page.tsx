@@ -1,5 +1,4 @@
 ﻿import Image from "next/image";
-import FolkPattern from "@/components/FolkPattern";
 import SponsorsRow from "@/components/SponsorsRow";
 
 const schedule = [
@@ -41,7 +40,6 @@ export default function TvarkarastisPage() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Tvarkaraštis</h1>
         </div>
       </section>
-      <FolkPattern />
 
       <section className="bg-white py-16 px-4">
         <div className="max-w-5xl mx-auto space-y-8">
@@ -74,7 +72,6 @@ export default function TvarkarastisPage() {
         </div>
       </section>
 
-      <FolkPattern />
       <SponsorsRow />
     </div>
   );
