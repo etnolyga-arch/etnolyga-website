@@ -1,4 +1,13 @@
-$Token = "figd_UDelbu_A6ziPngfWihIhvEocf10Do0PAg0VK5uF0"
+param(
+    [Parameter(Mandatory=$false)]
+    [string]$Token = $env:FIGMA_TOKEN
+)
+
+if (-not $Token) {
+    Write-Host "ERROR: Missing Figma token. Pass -Token or set FIGMA_TOKEN env var." -ForegroundColor Red
+    exit 1
+}
+
 $FileId = "5XkqZR8Tdc34HkSKKUmla4"
 $Headers = @{ "X-Figma-Token" = $Token }
 $OutDir = "D:\Projects\Ai-First-Company\ai-first-workspace-aj-meile\Dev\etnolyga-website\public\figma-assets\frames"
