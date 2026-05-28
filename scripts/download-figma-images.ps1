@@ -9,9 +9,11 @@ param(
 
 $FileId = "5XkqZR8Tdc34HkSKKUmla4"
 $OutDir = "$PSScriptRoot\..\public\figma-assets"
+$FrameOutDir = "$PSScriptRoot\..\public\figma-assets\frames"
 $Headers = @{ "X-Figma-Token" = $Token }
 
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
+New-Item -ItemType Directory -Force -Path $FrameOutDir | Out-Null
 
 Write-Host "Fetching Figma file structure..." -ForegroundColor Cyan
 
@@ -78,7 +80,7 @@ if ($FrameIds.Count -gt 0) {
         $fi++
         $safeId = $nodeId -replace ":", "-"
         $fileName = "frame-$fi-$safeId.png"
-        $filePath = Join-Path $OutDir $fileName
+        $filePath = Join-Path $FrameOutDir $fileName
         Write-Host "  [$fi] Saving $fileName" -ForegroundColor Gray
         try {
             Invoke-WebRequest -Uri $url -OutFile $filePath -ErrorAction Stop

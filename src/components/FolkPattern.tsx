@@ -17,8 +17,8 @@ export default function FolkPattern({ className = '', inverted = false, dark = f
         style={{ marginTop: `-${topH}px`, position: 'relative', zIndex: 10 }}
         aria-hidden="true"
       >
-        <div style={{ height: topH, backgroundColor: '#ffffff', backgroundImage: "url('/figma-assets/folk-ornament-h.png')", backgroundPosition: 'left top', ...base }} />
-        <div style={{ height: botH, backgroundColor: '#204C36', backgroundImage: "url('/figma-assets/folk-ornament-h-inv.png')", backgroundPosition: 'left bottom', ...base }} />
+        <div style={{ height: topH, backgroundColor: '#ffffff', backgroundImage: "url('/images/ui/patterns/folk-ornament-horizontal.png')", backgroundPosition: 'left top', ...base }} />
+        <div style={{ height: botH, backgroundColor: '#204C36', backgroundImage: "url('/images/ui/patterns/folk-ornament-horizontal-inverse.png')", backgroundPosition: 'left bottom', ...base }} />
       </div>
     );
   }
@@ -26,8 +26,8 @@ export default function FolkPattern({ className = '', inverted = false, dark = f
   const h = 66 * rows;
   const bgColor = dark ? '#204C36' : inverted ? '#BBDBBF' : '#ffffff';
   const bgImage = dark
-    ? "url('/figma-assets/folk-ornament-h-inv.png')"
-    : "url('/figma-assets/folk-ornament-h.png')";
+    ? "url('/images/ui/patterns/folk-ornament-horizontal-inverse.png')"
+    : "url('/images/ui/patterns/folk-ornament-horizontal.png')";
 
   return (
     <div

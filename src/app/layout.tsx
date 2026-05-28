@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SportProvider } from "@/lib/SportContext";
 
 export const metadata: Metadata = {
   title: "Etnolyga | Lietuviški tradiciniai sporto žaidimai",
@@ -24,9 +25,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col antialiased">
-        <Navbar />
-        <main className="flex-1 pb-12">{children}</main>
-        <Footer />
+        <SportProvider>
+          <Navbar />
+          <main className="flex-1 pb-12 pt-14">{children}</main>
+          <Footer />
+        </SportProvider>
       </body>
     </html>
   );

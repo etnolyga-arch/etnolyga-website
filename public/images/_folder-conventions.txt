@@ -1,0 +1,20 @@
+Root asset tree for production-ready image organization.
+
+brand/logos: site and product logos
+brand/social: social network icons and badges
+ui/arrows: directional arrows and navigation affordances
+ui/icons: shared UI icons
+ui/patterns: folk patterns and ornamental assets
+ui/textures: background textures and decorative surfaces
+sports/<sport>/heroes: page hero images
+sports/<sport>/gameplay: action photography
+sports/<sport>/teams: team and roster photography
+sports/<sport>/equipment: sticks, balls, and gear
+organizations/sponsors: sponsor logos
+organizations/partners: partner logos
+organizations/schools: school crests and team institutions
+locations/maps: map screenshots and location visuals
+content/news: editorial and news-specific imagery that is not tied to a single sport taxonomy
+reference/figma-frames: exported design frames for reference only
+reference/raw-exports: uncategorized intake before sorting
+placeholders: fallback images and temporary stand-ins

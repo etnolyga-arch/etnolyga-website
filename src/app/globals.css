@@ -8,6 +8,10 @@
   --font-sans: "DM Sans", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -16,4 +20,9 @@ body {
   background-color: #ffffff;
   color: #171717;
   font-family: "DM Sans", sans-serif;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }

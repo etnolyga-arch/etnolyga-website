@@ -1,6 +1,6 @@
 # Figma Assets Catalog
 
-All files are in `public/figma-assets/`. Image paths below are relative to the project root.
+Frame previews live in `public/figma-assets/frames/`. Everything else stays in `public/figma-assets/` for now.
 
 ---
 
@@ -12,31 +12,31 @@ These are the full Figma page designs used as implementation reference.
 
 | Preview | File | Description |
 |---------|------|-------------|
-| ![](public/figma-assets/frame-5--960px_homepage.png) | `frame-5--960px_homepage.png` | **Homepage v1** — news cards row, schedule widget sidebar, hero with folk pattern |
-| ![](public/figma-assets/frame-6--960px_homepage.png) | `frame-6--960px_homepage.png` | **Homepage v2** — same layout, slight content variation |
-| ![](public/figma-assets/frame-1--960_naujienų_sąrašas.png) | `frame-1--960_naujienų_sąrašas.png` | **News list** — grid of news cards with hero images |
-| ![](public/figma-assets/frame-9--960_naujiena_1_var_.png) | `frame-9--960_naujiena_1_var_.png` | **News article v1** — full article with photo on right, sponsors row |
-| ![](public/figma-assets/frame-10--960_naujiena_2_var_.png) | `frame-10--960_naujiena_2_var_.png` | **News article v2** — full article with photo at top |
-| ![](public/figma-assets/frame-11--960_apie_ritinį.png) | `frame-11--960_apie_ritinį.png` | **About Ripka** — "Ripka šiandien" section, federation info, folk pattern |
-| ![](public/figma-assets/frame-12--960_komanda.png) | `frame-12--960_komanda.png` | **Team page** — coach section, player grid, team info |
-| ![](public/figma-assets/frame-13--960_komandų_sąrašas.png) | `frame-13--960_komandų_sąrašas.png` | **Teams list** — grid of team cards with school logos |
-| ![](public/figma-assets/frame-14--960_turnyrinė_lentelė.png) | `frame-14--960_turnyrinė_lentelė.png` | **Tournament table v1** — standings table, "Didysis finalas" section |
-| ![](public/figma-assets/frame-15--960_turnyrinė_lentelė.png) | `frame-15--960_turnyrinė_lentelė.png` | **Tournament table v2** — standings with team photos |
-| ![](public/figma-assets/frame-8--960_kontaktai.png) | `frame-8--960_kontaktai.png` | **Contacts** — contact form, Google Maps, sponsor logos grid |
+| ![](public/figma-assets/frames/frame-5--960px_homepage.png) | `frame-5--960px_homepage.png` | **Homepage v1** — news cards row, schedule widget sidebar, hero with folk pattern |
+| ![](public/figma-assets/frames/frame-6--960px_homepage.png) | `frame-6--960px_homepage.png` | **Homepage v2** — same layout, slight content variation |
+| ![](public/figma-assets/frames/frame-1--960_naujienų_sąrašas.png) | `frame-1--960_naujienų_sąrašas.png` | **News list** — grid of news cards with hero images |
+| ![](public/figma-assets/frames/frame-9--960_naujiena_1_var_.png) | `frame-9--960_naujiena_1_var_.png` | **News article v1** — full article with photo on right, sponsors row |
+| ![](public/figma-assets/frames/frame-10--960_naujiena_2_var_.png) | `frame-10--960_naujiena_2_var_.png` | **News article v2** — full article with photo at top |
+| ![](public/figma-assets/frames/frame-11--960_apie_ritinį.png) | `frame-11--960_apie_ritinį.png` | **About Ripka** — "Ripka šiandien" section, federation info, folk pattern |
+| ![](public/figma-assets/frames/frame-12--960_komanda.png) | `frame-12--960_komanda.png` | **Team page** — coach section, player grid, team info |
+| ![](public/figma-assets/frames/frame-13--960_komandų_sąrašas.png) | `frame-13--960_komandų_sąrašas.png` | **Teams list** — grid of team cards with school logos |
+| ![](public/figma-assets/frames/frame-14--960_turnyrinė_lentelė.png) | `frame-14--960_turnyrinė_lentelė.png` | **Tournament table v1** — standings table, "Didysis finalas" section |
+| ![](public/figma-assets/frames/frame-15--960_turnyrinė_lentelė.png) | `frame-15--960_turnyrinė_lentelė.png` | **Tournament table v2** — standings with team photos |
+| ![](public/figma-assets/frames/frame-8--960_kontaktai.png) | `frame-8--960_kontaktai.png` | **Contacts** — contact form, Google Maps, sponsor logos grid |
 
 ### 640px Tablet
 
 | Preview | File | Description |
 |---------|------|-------------|
-| ![](public/figma-assets/frame-16--640px_homepage.png) | `frame-16--640px_homepage.png` | **Homepage v1** tablet |
-| ![](public/figma-assets/frame-17--640px_homepage.png) | `frame-17--640px_homepage.png` | **Homepage v2** tablet |
-| ![](public/figma-assets/frame-18--640px_naujienų_sąrašas.png) | `frame-18--640px_naujienų_sąrašas.png` | **News list** tablet |
-| ![](public/figma-assets/frame-19--640px_tvarkaraštis.png) | `frame-19--640px_tvarkaraštis.png` | **Schedule** tablet |
-| ![](public/figma-assets/frame-20--640px_apie_ritinį.png) | `frame-20--640px_apie_ritinį.png` | **About Ripka** tablet |
-| ![](public/figma-assets/frame-21--640px_naujiena_2_var_.png) | `frame-21--640px_naujiena_2_var_.png` | **News article v2** tablet |
-| ![](public/figma-assets/frame-22--640px_naujiena_1_var_.png) | `frame-22--640px_naujiena_1_var_.png` | **News article v1** tablet |
-| ![](public/figma-assets/frame-23--640px_kontaktai.png) | `frame-23--640px_kontaktai.png` | **Contacts** tablet |
-| ![](public/figma-assets/frame-24--640px_komanda.png) | `frame-24--640px_komanda.png` | **Team page** tablet |
+| ![](public/figma-assets/frames/frame-16--640px_homepage.png) | `frame-16--640px_homepage.png` | **Homepage v1** tablet |
+| ![](public/figma-assets/frames/frame-17--640px_homepage.png) | `frame-17--640px_homepage.png` | **Homepage v2** tablet |
+| ![](public/figma-assets/frames/frame-18--640px_naujienų_sąrašas.png) | `frame-18--640px_naujienų_sąrašas.png` | **News list** tablet |
+| ![](public/figma-assets/frames/frame-19--640px_tvarkaraštis.png) | `frame-19--640px_tvarkaraštis.png` | **Schedule** tablet |
+| ![](public/figma-assets/frames/frame-20--640px_apie_ritinį.png) | `frame-20--640px_apie_ritinį.png` | **About Ripka** tablet |
+| ![](public/figma-assets/frames/frame-21--640px_naujiena_2_var_.png) | `frame-21--640px_naujiena_2_var_.png` | **News article v2** tablet |
+| ![](public/figma-assets/frames/frame-22--640px_naujiena_1_var_.png) | `frame-22--640px_naujiena_1_var_.png` | **News article v1** tablet |
+| ![](public/figma-assets/frames/frame-23--640px_kontaktai.png) | `frame-23--640px_kontaktai.png` | **Contacts** tablet |
+| ![](public/figma-assets/frames/frame-24--640px_komanda.png) | `frame-24--640px_komanda.png` | **Team page** tablet |
 
 ---
 
@@ -44,10 +44,10 @@ These are the full Figma page designs used as implementation reference.
 
 | Preview | File | Description | Use |
 |---------|------|-------------|-----|
-| ![](public/figma-assets/frame-2--Instagram_icon.png) | `frame-2--Instagram_icon.png` | Instagram pixel-art icon | Footer/Navbar social link |
-| ![](public/figma-assets/frame-3--Youtube_icon.png) | `frame-3--Youtube_icon.png` | YouTube pixel-art icon | Footer/Navbar social link |
-| ![](public/figma-assets/frame-7--Facebook_icon.png) | `frame-7--Facebook_icon.png` | Facebook pixel-art icon | Footer/Navbar social link |
-| ![](public/figma-assets/frame-4--Raštai_vertikalūs_trumpi.png) | `frame-4--Raštai_vertikalūs_trumpi.png` | Folk pattern — vertical short strip (green bg, white pixel motif) | Section dividers |
+| ![](public/figma-assets/frames/frame-2--Instagram_icon.png) | `frame-2--Instagram_icon.png` | Instagram pixel-art icon | Footer/Navbar social link |
+| ![](public/figma-assets/frames/frame-3--Youtube_icon.png) | `frame-3--Youtube_icon.png` | YouTube pixel-art icon | Footer/Navbar social link |
+| ![](public/figma-assets/frames/frame-7--Facebook_icon.png) | `frame-7--Facebook_icon.png` | Facebook pixel-art icon | Footer/Navbar social link |
+| ![](public/figma-assets/frames/frame-4--Raštai_vertikalūs_trumpi.png) | `frame-4--Raštai_vertikalūs_trumpi.png` | Folk pattern — vertical short strip (green bg, white pixel motif) | Section dividers |
 
 ---
 
@@ -215,3 +215,4 @@ Each team in the league represents a Vilnius school.
 - Frames 25–49 (320px mobile designs + remaining components) were not exported due to Figma API rate limits. Run `scripts/export-frames-resume.ps1` after a few hours to get them.
 - The logos at `frame-40` (Etnolyga horizontal logo PNG) and `frame-41` (Etnolyga vertical logo PNG) are also pending — use the `ETN♦LYGA` text implementation in Navbar/Footer in the meantime.
 - Many photos exist in multiple resolutions — prefer the largest version for hero sections and the smaller compressed version for cards/thumbnails.
+

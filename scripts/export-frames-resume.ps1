@@ -1,7 +1,9 @@
 $Token = "figd_UDelbu_A6ziPngfWihIhvEocf10Do0PAg0VK5uF0"
 $FileId = "5XkqZR8Tdc34HkSKKUmla4"
 $Headers = @{ "X-Figma-Token" = $Token }
-$OutDir = "D:\Projects\Ai-First-Company\ai-first-workspace-aj-meile\Dev\etnolyga-website\public\figma-assets"
+$OutDir = "D:\Projects\Ai-First-Company\ai-first-workspace-aj-meile\Dev\etnolyga-website\public\figma-assets\frames"
+
+New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
 # All 49 frame IDs (frames 1-24 already downloaded; this script starts from 25)
 $ids = @(
