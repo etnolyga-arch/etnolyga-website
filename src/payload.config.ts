@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+import { lt } from '@payloadcms/translations/languages/lt';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 
@@ -29,6 +30,11 @@ export default buildConfig({
   },
   collections: [Users, Media, News, Teams, Schedule, Standings, Sponsors],
   globals: [SiteSettings, About],
+  // Lithuanian-only admin UI (built-in labels like "Sukurti naują").
+  i18n: {
+    supportedLanguages: { lt },
+    fallbackLanguage: 'lt',
+  },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
