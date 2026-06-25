@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
-import { sponsors, partners } from '@/lib/sponsors';
+import type { SponsorItem } from '@/lib/sponsors';
 
-function LogoCarousel({ label, items, duration = 18 }: { label: string; items: typeof sponsors; duration?: number }) {
+function LogoCarousel({ label, items, duration = 18 }: { label: string; items: SponsorItem[]; duration?: number }) {
   const doubled = [...items, ...items];
   return (
     <div className="flex items-center gap-6 py-5 border-b border-graphite/10 last:border-0">
@@ -42,7 +42,13 @@ function LogoCarousel({ label, items, duration = 18 }: { label: string; items: t
   );
 }
 
-export default function SponsorsRow() {
+export default function SponsorsRow({
+  sponsors,
+  partners,
+}: {
+  sponsors: SponsorItem[];
+  partners: SponsorItem[];
+}) {
   return (
     <section className="bg-white py-8 px-6">
       <div className="max-w-5xl mx-auto">

@@ -1,9 +1,12 @@
 ﻿import Image from "next/image";
-import SponsorsRow from "@/components/SponsorsRow";
-import { schedule } from '@/lib/schedule';
+import SponsorsSection from "@/components/SponsorsSection";
+import { getSchedule } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
-export default function TvarkarastisPage() {
+export const revalidate = 30;
+
+export default async function TvarkarastisPage() {
+  const schedule = await getSchedule();
   return (
     <div>
       {/* Hero */}
@@ -47,7 +50,7 @@ export default function TvarkarastisPage() {
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }

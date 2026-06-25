@@ -1,12 +1,21 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import SponsorsRow from "@/components/SponsorsRow";
-import { teams } from '@/lib/teams';
-import { news } from '@/lib/news';
-import { siteConfig } from '@/lib/site';
-import { nextMatch } from '@/lib/schedule';
+import SponsorsSection from "@/components/SponsorsSection";
+import { getTeams } from '@/lib/cms';
+import { getNews } from '@/lib/cms';
+import { getSiteSettings } from '@/lib/cms';
+import { getSchedule } from '@/lib/cms';
 
-export default function Home() {
+export const revalidate = 30;
+
+export default async function Home() {
+  const [siteConfig, teams, news, schedule] = await Promise.all([
+    getSiteSettings(),
+    getTeams(),
+    getNews(),
+    getSchedule(),
+  ]);
+  const nextMatch = schedule[0];
   return (
     <div>
       <section className="relative min-h-[640px] overflow-hidden -mt-14">
@@ -144,7 +153,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }

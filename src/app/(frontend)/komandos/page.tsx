@@ -1,10 +1,13 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import SponsorsRow from "@/components/SponsorsRow";
-import { teams } from '@/lib/teams';
+import SponsorsSection from "@/components/SponsorsSection";
+import { getTeams } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
-export default function KomandosPage() {
+export const revalidate = 30;
+
+export default async function KomandosPage() {
+  const teams = await getTeams();
   return (
     <div>
       {/* Hero */}
@@ -49,7 +52,7 @@ export default function KomandosPage() {
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }

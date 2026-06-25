@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Button from '@/components/Button';
 import BackButton from '@/components/BackButton';
-import { getNewsItem } from '@/lib/news';
+import { getNewsItem } from '@/lib/cms';
+
+export const revalidate = 30;
 
 export default async function NaujienosSlugPage({
   params,
@@ -9,7 +11,7 @@ export default async function NaujienosSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getNewsItem(slug);
+  const article = await getNewsItem(slug);
 
   if (!article) {
     return (

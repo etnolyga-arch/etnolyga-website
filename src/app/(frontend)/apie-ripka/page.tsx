@@ -1,10 +1,13 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import SponsorsRow from "@/components/SponsorsRow";
-import { timeline, gameDescription, ripkaToday, rules } from '@/lib/about';
+import SponsorsSection from "@/components/SponsorsSection";
+import { getAbout } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
-export default function ApieRipkaPage() {
+export const revalidate = 30;
+
+export default async function ApieRipkaPage() {
+  const { timeline, gameDescription, ripkaToday, rules } = await getAbout();
   return (
     <div>
       {/* Hero */}
@@ -90,7 +93,7 @@ export default function ApieRipkaPage() {
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }
