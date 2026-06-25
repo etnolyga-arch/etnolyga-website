@@ -68,12 +68,13 @@ export default function Navbar() {
                   return (
                     <button
                       key={sport.key}
-                      onClick={() => { setSelectedSport(sport); setSportOpen(false); }}
-                      className={`w-full text-left px-4 py-2.5 flex items-center gap-2 transition-colors hover:bg-white/5 ${i < sports.length - 1 ? 'border-b border-white/10' : ''}`}
+                      disabled={!sport.available}
+                      onClick={() => { if (sport.available) { setSelectedSport(sport); setSportOpen(false); } }}
+                      className={`w-full text-left px-4 py-2.5 flex items-center gap-2 transition-colors ${i < sports.length - 1 ? 'border-b border-white/10' : ''} ${sport.available ? 'hover:bg-white/5' : 'cursor-not-allowed opacity-50'}`}
                     >
                       <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${isSelected ? 'bg-green-light' : 'bg-white/20'}`} />
                       <div>
-                        <span className={`text-[11px] tracking-[0.18em] uppercase ${isSelected ? 'font-bold text-green-light' : 'text-white/50 hover:text-white/75'}`}>{sport.label}</span>
+                        <span className={`text-[11px] tracking-[0.18em] uppercase ${isSelected ? 'font-bold text-green-light' : 'text-white/50'}`}>{sport.label}</span>
                         {!sport.available && sport.comingSoonLabel && (
                           <span className="ml-2 text-[9px] text-white/25 uppercase tracking-wider">{sport.comingSoonLabel}</span>
                         )}
@@ -149,12 +150,20 @@ export default function Navbar() {
                   return (
                     <button
                       key={sport.key}
-                      onClick={() => setSelectedSport(sport)}
+                      disabled={!sport.available}
+                      onClick={() => { if (sport.available) setSelectedSport(sport); }}
                       className={`text-[11px] tracking-[0.15em] uppercase px-2 py-1 transition-colors ${
-                        isSelected ? 'font-bold text-green-light bg-white/10' : 'text-white/25 hover:text-white/50'
+                        isSelected
+                          ? 'font-bold text-green-light bg-white/10'
+                          : sport.available
+                            ? 'text-white/25 hover:text-white/50'
+                            : 'text-white/20 cursor-not-allowed'
                       }`}
                     >
                       {sport.label}
+                      {!sport.available && sport.comingSoonLabel && (
+                        <span className="ml-1.5 text-[8px] text-white/20">{sport.comingSoonLabel}</span>
+                      )}
                     </button>
                   );
                 })}
