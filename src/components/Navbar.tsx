@@ -116,6 +116,12 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <a
+            href="/admin"
+            className="text-[11px] tracking-wide text-white/80 hover:text-white border border-white/30 hover:border-white/60 rounded px-2.5 py-1 transition-colors"
+          >
+            Prisijungti
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -186,6 +192,14 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            <a
+              href="/admin"
+              className="flex items-center gap-3 py-3 border-b border-white/5 last:border-0 text-white/60 hover:text-white transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              <div className="w-4 flex-shrink-0" />
+              <span className="text-sm tracking-wide font-normal">Prisijungti</span>
+            </a>
           </div>
         </div>
       )}
