@@ -5,7 +5,7 @@ export const siteConfig = {
   etnolyga: {
     title: 'Etnolyga',
     description1:
-      'Etnolyga yra skirta 16–19 m. moksleiviams, kurie varžysis žaisdami lietuvišką ripką. Lygos tikslas – integruoti lietuvišką tradiciją į šiuolaikinę jaunimo kultūrą ir ugdyti bendrystės jausmą.',
+      'Etnolyga yra skirta 16–19 m. moksleiviams, kurie varžysis žaisdami lietuvišką ritinį (ripką). Lygos tikslas – integruoti lietuvišką tradiciją į šiuolaikinę jaunimo kultūrą ir ugdyti bendrystės jausmą.',
     description2:
       'Etnosporto lygą organizuoja Lietuvos etnosporto komitetas – 2019 m. įkurta organizacija, puoselėjanti lietuviškus tradicinius žaidimus.',
     photo: '/images/sports/ripka/teams/uz-jona-team.png',

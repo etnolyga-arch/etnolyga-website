@@ -19,27 +19,28 @@ export const timeline = [
 
 export const gameDescription = {
   paragraphs: [
-    'Futbolo aikštėje susitinka dvi komandos po 7 žaidėjus, kurie stengiasi paridenti gumos diską (ripką) per varžovų galinę liniją. Žaidimas reikalauja greitumo, koordinacijos ir komandinio darbo.',
-    'Ripka žaidžiama specialiomis lazdelėmis, kuriomis ritinamas guminis diskas. Žaidimo trukmė – du kėliniai po 20 minučių.',
-    'Komandos sudaro puolėjai ir gynėjai, kurių vaidmenys kinta dinamiškai per rungtynes.',
+    'Ritinis – nacionalinis lietuvių sporto žaidimas, žaidžiamas futbolo stadione tarp dviejų komandų po 7 žaidėjus. Žaidimo metu komandos siekia išritinti guminį diską (ripką) pro varžovų ginamus vartus arba per galinę liniją ir taip pelnyti taškus. Besiginanti komanda stengiasi sustabdyti ripką specialiomis lazdomis (ritmušomis) ir perimti puolimą. Žaidimas reikalauja greitumo, tikslumo, sumanumo, koordinacijos ir komandinio darbo.',
+    'Žaidimo trukmė – du kėliniai po 20 minučių gryno (stabdomo) laiko.',
+    'Komandas sudaro puolėjai, gynėjai ir vartininkas. Puolėjų ir gynėjų vaidmenys rungtynių metu dinamiškai kinta.',
   ],
   photo: '/images/sports/ripka/gameplay/girl-playing.png',
 };
 
 export const ripkaToday = {
   paragraphs: [
-    'Ripka aktyviausiai žaidžiama Žemaitijoje (Plungė, Kupiškis, Kaunas, Vilkaviškis, Elektrėnai ir Šiauliai). Lietuvos ritinio sporto federacija koordinuoja čempionatų organizavimą ir taisyklių kūrimą.',
-    'Federacija vienija daugiau nei 20 klubų visoje Lietuvoje ir kasmet rengia Lietuvos čempionatą.',
+    'Šiandien ritinis aktyviai žaidžiamas įvairiuose Lietuvos regionuose. Lietuvos ritinio sporto federacija organizuoja Lietuvos vyrų ir moterų čempionatus, taurės varžybas bei kitus sporto renginius. 2026 m. Lietuvos čempionato etapai vyksta Palangoje, Šiauliuose, Kaune, Kupiškyje ir Vilkaviškyje.',
+    'Ritinis labiausiai puoselėjamas Plungės (Platelių), Kupiškio, Kauno, Vilkaviškio, Šiaulių, Elektrėnų kraštuose.',
+    'Be suaugusiųjų varžybų, organizuojamos edukacinės veiklos bei parodomosios rungtynės, siekiant supažindinti visuomenę su vienu seniausių lietuviškų komandinių sporto žaidimų.',
   ],
   photo: '/images/sports/ripka/gameplay/gameplay-wide.png',
-  federationUrl: 'https://www.lrsf.lt',
+  federationUrl: 'https://ritinis.lt/',
 };
 
 export const rules = {
   paragraphs: [
     'Lietuvos ritinio sporto federacija tvirtina žaidimo taisykles, paskelbtas 2023 m. taisyklių sąvade.',
-    'Ripkoje draudžiama: žaidėjus stumti, laikyti, naudoti lazdelę kaip ginklą, skraidinti ripką per tam tikrą aukštį.',
+    'Ritinys žaidžiamas dviem komandoms varžantis dėl ripkos valdymo ir taškų pelnymo. Ripka metama ranka, o jos riedėjimas stabdomas ritmušomis. Žaidimas pasižymi greita puolimo ir gynybos kaita. Draudžiami veiksmai, keliantys pavojų varžovų saugumui ar nesportiškas elgesys.',
   ],
-  rulesUrl: 'https://www.lrsf.lt/taisykles',
+  rulesUrl: 'https://ritinis.lt/?page_id=14',
   photo: '/images/sports/ripka/equipment/stick-and-disc.png',
 };
