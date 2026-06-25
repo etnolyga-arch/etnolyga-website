@@ -1,8 +1,12 @@
 ﻿import Image from "next/image";
-import SponsorsRow from "@/components/SponsorsRow";
+import SponsorsSection from "@/components/SponsorsSection";
+import { getSiteSettings } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
-export default function KontaktaiPage() {
+export const revalidate = 30;
+
+export default async function KontaktaiPage() {
+  const { contact } = await getSiteSettings();
   return (
     <div>
       {/* Hero */}
@@ -20,36 +24,36 @@ export default function KontaktaiPage() {
           <div className="md:col-span-2 grid grid-cols-2 gap-x-12 gap-y-8">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">El. paštas</p>
-              <a href={`mailto:${siteConfig.contact.email}`} className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{siteConfig.contact.email}</a>
+              <a href={`mailto:${contact.email}`} className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{contact.email}</a>
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Facebook</p>
-              <a href={siteConfig.contact.facebook.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{siteConfig.contact.facebook.label}</a>
+              <a href={contact.facebook.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{contact.facebook.label}</a>
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Tel. numeris</p>
-              <a href={`tel:${siteConfig.contact.phone}`} className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{siteConfig.contact.phone}</a>
+              <a href={`tel:${contact.phone}`} className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{contact.phone}</a>
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Instagram</p>
-              <a href={siteConfig.contact.instagram.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{siteConfig.contact.instagram.label}</a>
+              <a href={contact.instagram.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{contact.instagram.label}</a>
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Darbo laikas</p>
-              <p className="text-sm font-semibold text-graphite">{siteConfig.contact.hours}</p>
+              <p className="text-sm font-semibold text-graphite">{contact.hours}</p>
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-1">Youtube</p>
-              <a href={siteConfig.contact.youtube.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{siteConfig.contact.youtube.label}</a>
+              <a href={contact.youtube.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-graphite hover:text-green-dark transition-colors">{contact.youtube.label}</a>
             </div>
           </div>
           <div className="relative min-h-[280px]">
-            <Image src={siteConfig.contact.photo} alt="Etnolyga komanda" fill className="object-cover" />
+            <Image src={contact.photo} alt="Etnolyga komanda" fill className="object-cover" />
           </div>
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }

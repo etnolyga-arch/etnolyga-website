@@ -1,9 +1,12 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import SponsorsRow from "@/components/SponsorsRow";
-import { news } from '@/lib/news';
+import SponsorsSection from "@/components/SponsorsSection";
+import { getNews } from '@/lib/cms';
 
-export default function NaujienosPage() {
+export const revalidate = 30;
+
+export default async function NaujienosPage() {
+  const news = await getNews();
   return (
     <div>
       {/* Hero */}
@@ -38,7 +41,7 @@ export default function NaujienosPage() {
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }

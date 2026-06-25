@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import SponsorsRow from '@/components/SponsorsRow';
-import { getTeam, teams } from '@/lib/teams';
+import SponsorsSection from '@/components/SponsorsSection';
+import { getTeam, getTeams } from '@/lib/cms';
+
+export const revalidate = 30;
 
 export default async function KomandaPage({
   params,
@@ -9,7 +11,7 @@ export default async function KomandaPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const team = getTeam(slug);
+  const [team, teams] = await Promise.all([getTeam(slug), getTeams()]);
 
   if (!team) {
     return (
@@ -140,7 +142,7 @@ export default async function KomandaPage({
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }

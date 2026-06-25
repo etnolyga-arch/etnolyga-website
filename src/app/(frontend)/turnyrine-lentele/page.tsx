@@ -1,6 +1,7 @@
 ﻿import Image from "next/image";
-import SponsorsRow from "@/components/SponsorsRow";
-import { group1, group2, type StandingRow } from '@/lib/standings';
+import SponsorsSection from "@/components/SponsorsSection";
+import { type StandingRow } from '@/lib/standings';
+import { getStandings } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
 function StandingsTable({ label, standings }: { label: string; standings: StandingRow[] }) {
@@ -72,7 +73,10 @@ function FinalMatchup({ label, t1, t2 }: { label: string; t1: StandingRow; t2: S
   );
 }
 
-export default function TurnyrineLetelePage() {
+export const revalidate = 30;
+
+export default async function TurnyrineLetelePage() {
+  const { group1, group2 } = await getStandings();
   return (
     <div>
       {/* Hero */}
@@ -102,7 +106,7 @@ export default function TurnyrineLetelePage() {
         </div>
       </section>
 
-      <SponsorsRow />
+      <SponsorsSection />
     </div>
   );
 }
