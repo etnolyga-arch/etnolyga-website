@@ -24,13 +24,23 @@ const mediaUrl = (m: unknown): string =>
 
 const stripProtocol = (url: string): string => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
+/** Format an ISO date as a Lithuanian long date, e.g. "2025 m. liepos 10 d." */
+const ltDate = new Intl.DateTimeFormat('lt-LT', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+const formatLtDate = (iso?: string | null): string => (iso ? ltDate.format(new Date(iso)) : '');
+
 export const getNews = cache(async (): Promise<NewsItem[]> => {
   const payload = await client();
-  const { docs } = await payload.find({ collection: 'news', limit: 100, sort: 'createdAt', depth: 1 });
+  // Newest first.
+  const { docs } = await payload.find({ collection: 'news', limit: 100, sort: '-publishedAt', depth: 1 });
   return docs.map((n) => ({
     slug: n.slug,
     title: n.title,
-    date: n.date,
+    date: formatLtDate(n.publishedAt),
     excerpt: n.excerpt,
     photo: mediaUrl(n.photo),
     body: n.body ?? undefined,

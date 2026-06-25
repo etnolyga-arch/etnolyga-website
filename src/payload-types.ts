@@ -197,9 +197,9 @@ export interface News {
    */
   slug: string;
   /**
-   * Rodoma data, pvz. „2025 m. liepos 10 d.".
+   * Naujienos data (svetainėje rodoma lietuviškai). Naujausios rodomos viršuje.
    */
-  date: string;
+  publishedAt: string;
   excerpt: string;
   photo: number | Media;
   body: string;
@@ -447,7 +447,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface NewsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
-  date?: T;
+  publishedAt?: T;
   excerpt?: T;
   photo?: T;
   body?: T;

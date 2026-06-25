@@ -21,11 +21,14 @@ export const News: CollectionConfig = {
       admin: { description: 'URL dalis, pvz. „stovykla-trakuose".' },
     },
     {
-      name: 'date',
-      type: 'text',
+      name: 'publishedAt',
+      type: 'date',
       label: 'Data',
       required: true,
-      admin: { description: 'Rodoma data, pvz. „2025 m. liepos 10 d.".' },
+      admin: {
+        date: { pickerAppearance: 'dayOnly', displayFormat: 'yyyy-MM-dd' },
+        description: 'Naujienos data (svetainėje rodoma lietuviškai). Naujausios rodomos viršuje.',
+      },
     },
     { name: 'excerpt', type: 'textarea', label: 'Santrauka', required: true },
     {
