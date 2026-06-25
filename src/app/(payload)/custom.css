@@ -1,0 +1,17 @@
+/* ---- Etnolyga admin tweaks ---- */
+
+/* Add a large "+" to the "Create New" button across all collection list views. */
+.list-header__create-new-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.list-header__create-new-button::before {
+  content: "+";
+  font-size: 1.35em;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  top: -0.04em;
+}
