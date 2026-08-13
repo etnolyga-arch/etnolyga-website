@@ -1,5 +1,11 @@
-export type PlayerRole = 'Puolėjas' | 'Gynėjas';
-export type Player = { name: string; role: PlayerRole };
+export type PlayerRole = 'Žaidėjas' | 'Vartininkas' | 'Treneris' | 'Puolėjas' | 'Gynėjas';
+export type Player = {
+  name: string;
+  role: PlayerRole;
+  photo?: string;
+  number?: number;
+  bio?: string;
+};
 
 export type Team = {
   slug: string;

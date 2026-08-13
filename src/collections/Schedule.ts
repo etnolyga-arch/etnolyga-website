@@ -23,9 +23,18 @@ export const Schedule: CollectionConfig = {
       admin: { description: 'Mažesnis skaičius rodomas pirmiau.' },
     },
     {
+      name: 'teamRefs',
+      type: 'relationship',
+      relationTo: 'teams',
+      hasMany: true,
+      label: 'Komandos',
+      admin: { description: 'Pasirink komandas iš sąrašo.' },
+    },
+    {
       name: 'teams',
       type: 'array',
-      label: 'Komandos',
+      label: 'Komandos (senas laukelis)',
+      admin: { hidden: true },
       fields: [
         { name: 'name', type: 'text', label: 'Pavadinimas', required: true },
         { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logotipas' },

@@ -24,6 +24,12 @@ export const Sponsors: CollectionConfig = {
     },
     { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logotipas', required: true },
     {
+      name: 'website',
+      type: 'text',
+      label: 'Svetainė (URL)',
+      admin: { description: 'Pvz.: https://example.com — paspaudus logotipą atsidarys ši nuoroda.' },
+    },
+    {
       name: 'order',
       type: 'number',
       label: 'Eiliškumas',

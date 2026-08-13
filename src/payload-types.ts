@@ -226,7 +226,16 @@ export interface Team {
   players?:
     | {
         name: string;
-        role: 'Puolėjas' | 'Gynėjas';
+        role: 'Žaidėjas' | 'Vartininkas' | 'Treneris' | 'Puolėjas' | 'Gynėjas';
+        photo?: (number | null) | Media;
+        /**
+         * Žaidėjo marškinėlių numeris.
+         */
+        number?: number | null;
+        /**
+         * Trumpa informacija apie žaidėją, titulai ir t.t.
+         */
+        bio?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -253,6 +262,10 @@ export interface Schedule {
    * Mažesnis skaičius rodomas pirmiau.
    */
   order?: number | null;
+  /**
+   * Pasirink komandas iš sąrašo.
+   */
+  teamRefs?: (number | Team)[] | null;
   teams?:
     | {
         name: string;
@@ -297,6 +310,10 @@ export interface Sponsor {
   name: string;
   type: 'sponsor' | 'partner';
   logo: number | Media;
+  /**
+   * Pvz.: https://example.com — paspaudus logotipą atsidarys ši nuoroda.
+   */
+  website?: string | null;
   /**
    * Mažesnis skaičius rodomas pirmiau.
    */
@@ -472,6 +489,9 @@ export interface TeamsSelect<T extends boolean = true> {
     | {
         name?: T;
         role?: T;
+        photo?: T;
+        number?: T;
+        bio?: T;
         id?: T;
       };
   quote?: T;
@@ -490,6 +510,7 @@ export interface ScheduleSelect<T extends boolean = true> {
   location?: T;
   group?: T;
   order?: T;
+  teamRefs?: T;
   teams?:
     | T
     | {
@@ -526,6 +547,7 @@ export interface SponsorsSelect<T extends boolean = true> {
   name?: T;
   type?: T;
   logo?: T;
+  website?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;

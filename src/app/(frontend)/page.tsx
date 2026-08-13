@@ -83,7 +83,7 @@ export default async function Home() {
           <div className="relative min-h-[400px] flex flex-col">
             <div className="flex-1 min-h-[320px]">
               <iframe
-                src="https://maps.google.com/maps?q=Simono+Daukanto+gimnazija+Vilnius&output=embed"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(nextMatch?.location ?? '')}&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '320px', display: 'block' }}

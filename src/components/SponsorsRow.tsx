@@ -24,8 +24,8 @@ function LogoCarousel({ label, items, duration = 18 }: { label: string; items: S
           onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = 'paused')}
           onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = 'running')}
         >
-          {doubled.map((item, i) => (
-            <div key={i} className="flex items-center justify-center px-6" style={{ width: '140px', flexShrink: 0 }}>
+          {doubled.map((item, i) => {
+            const img = (
               <Image
                 src={item.src}
                 alt={item.alt}
@@ -34,8 +34,17 @@ function LogoCarousel({ label, items, duration = 18 }: { label: string; items: S
                 loading="eager"
                 className="object-contain max-h-10 w-auto"
               />
-            </div>
-          ))}
+            );
+            return (
+              <div key={i} className="flex items-center justify-center px-6" style={{ width: '140px', flexShrink: 0 }}>
+                {item.website ? (
+                  <a href={item.website} target="_blank" rel="noopener noreferrer" title={item.alt}>
+                    {img}
+                  </a>
+                ) : img}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

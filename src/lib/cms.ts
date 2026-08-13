@@ -63,7 +63,13 @@ export const getTeams = cache(async (): Promise<Team[]> => {
     logo: mediaUrl(t.logo),
     photo: mediaUrl(t.photo),
     coach: t.coach ?? '',
-    players: (t.players ?? []).map((p) => ({ name: p.name, role: p.role })),
+    players: (t.players ?? []).map((p) => ({
+      name: p.name,
+      role: p.role,
+      photo: mediaUrl(p.photo) || undefined,
+      number: p.number ?? undefined,
+      bio: p.bio ?? undefined,
+    })),
     quote: t.quote ?? undefined,
     quoteAuthor: t.quoteAuthor ?? undefined,
   }));
@@ -96,19 +102,34 @@ export const getStandings = cache(async (): Promise<{ group1: StandingRow[]; gro
 export const getSchedule = cache(async (): Promise<ScheduleEntry[]> => {
   const payload = await client();
   const { docs } = await payload.find({ collection: 'schedule', limit: 100, sort: 'order', depth: 1 });
-  return docs.map((s) => ({
-    date: s.date,
-    time: s.time ?? '',
-    location: s.location,
-    group: s.group ?? '',
-    teams: (s.teams ?? []).map((tm) => ({ name: tm.name, logo: mediaUrl(tm.logo) })),
-  }));
+  return docs.map((s) => {
+    const refs = s.teamRefs;
+    const teamsFromRefs = refs?.length
+      ? refs.map((t) => {
+          if (typeof t === 'object' && t !== null && 'name' in t) {
+            return { name: t.name, logo: mediaUrl((t as { logo?: unknown }).logo) };
+          }
+          return { name: '', logo: '' };
+        })
+      : null;
+    return {
+      date: s.date,
+      time: s.time ?? '',
+      location: s.location,
+      group: s.group ?? '',
+      teams: teamsFromRefs ?? (s.teams ?? []).map((tm) => ({ name: tm.name, logo: mediaUrl(tm.logo) })),
+    };
+  });
 });
 
 export const getSponsors = cache(async (): Promise<{ sponsors: SponsorItem[]; partners: SponsorItem[] }> => {
   const payload = await client();
   const { docs } = await payload.find({ collection: 'sponsors', limit: 100, sort: 'order', depth: 1 });
-  const toItem = (d: { name: string; logo: unknown }): SponsorItem => ({ src: mediaUrl(d.logo), alt: d.name });
+  const toItem = (d: { name: string; logo: unknown; website?: string | null }): SponsorItem => ({
+    src: mediaUrl(d.logo),
+    alt: d.name,
+    website: d.website ?? undefined,
+  });
   return {
     sponsors: docs.filter((d) => d.type === 'sponsor').map(toItem),
     partners: docs.filter((d) => d.type === 'partner').map(toItem),

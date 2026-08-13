@@ -22,9 +22,18 @@ export default async function KomandaPage({
     );
   }
 
-  const puolejai = team.players.filter((p) => p.role === 'Puolėjas');
-  const gynejai = team.players.filter((p) => p.role === 'Gynėjas');
   const otherTeams = teams.filter((t) => t.slug !== slug);
+  const roleOrder = ['Treneris', 'Vartininkas', 'Žaidėjas', 'Puolėjas', 'Gynėjas'];
+  const roleLabels: Record<string, string> = {
+    Treneris: 'Treneriai',
+    Vartininkas: 'Vartininkai',
+    Žaidėjas: 'Žaidėjai',
+    Puolėjas: 'Puolėjai',
+    Gynėjas: 'Gynėjai',
+  };
+  const grouped = roleOrder
+    .map((role) => ({ role, label: roleLabels[role] ?? role, players: team.players.filter((p) => p.role === role) }))
+    .filter((g) => g.players.length > 0);
 
   return (
     <div>
@@ -52,36 +61,33 @@ export default async function KomandaPage({
               <p className="text-sm text-graphite/50">Sudėtis dar nepaskelbta.</p>
             ) : (
               <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
-                {puolejai.length > 0 && (
-                  <div>
-                    <h2 className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-4">Puolėjai</h2>
+                {grouped.map(({ role, label, players }) => (
+                  <div key={role}>
+                    <h2 className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-4">{label}</h2>
                     <div>
-                      {puolejai.map((p, i) => (
-                        <div key={p.name} className="flex items-center gap-4 py-3 border-b border-graphite/8">
-                          <span className="text-[11px] font-semibold text-graphite/30 w-5 text-right tabular-nums">
-                            {String(i + 1).padStart(2, '0')}
-                          </span>
-                          <span className="text-sm text-graphite">{p.name}</span>
+                      {players.map((p) => (
+                        <div key={p.name} className="flex items-center gap-3 py-3 border-b border-graphite/8">
+                          {p.photo ? (
+                            <Image src={p.photo} alt={p.name} width={36} height={36} className="rounded-full object-cover flex-shrink-0 border border-graphite/10" style={{ width: 36, height: 36 }} />
+                          ) : (
+                            <div className="w-9 h-9 rounded-full bg-graphite/10 flex items-center justify-center flex-shrink-0">
+                              <span className="text-xs font-semibold text-graphite/40">{p.name.charAt(0)}</span>
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              {p.number != null && (
+                                <span className="text-[11px] font-semibold text-graphite/30 tabular-nums">#{p.number}</span>
+                              )}
+                              <span className="text-sm text-graphite">{p.name}</span>
+                            </div>
+                            {p.bio && <p className="text-[11px] text-graphite/50 leading-tight mt-0.5">{p.bio}</p>}
+                          </div>
                         </div>
                       ))}
                     </div>
                   </div>
-                )}
-                {gynejai.length > 0 && (
-                  <div>
-                    <h2 className="text-[11px] font-semibold uppercase tracking-widest text-graphite/40 mb-4">Gynėjai</h2>
-                    <div>
-                      {gynejai.map((p, i) => (
-                        <div key={p.name} className="flex items-center gap-4 py-3 border-b border-graphite/8">
-                          <span className="text-[11px] font-semibold text-graphite/30 w-5 text-right tabular-nums">
-                            {String(i + 1).padStart(2, '0')}
-                          </span>
-                          <span className="text-sm text-graphite">{p.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                ))}
               </div>
             )}
           </div>

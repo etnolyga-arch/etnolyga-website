@@ -1,4 +1,4 @@
-export type SponsorItem = { src: string; alt: string };
+export type SponsorItem = { src: string; alt: string; website?: string };
 
 export const sponsors: SponsorItem[] = [
   { src: '/images/organizations/sponsors/loco-citric.png', alt: 'Loco Citric' },
