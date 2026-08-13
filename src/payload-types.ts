@@ -286,7 +286,11 @@ export interface Schedule {
  */
 export interface Standing {
   id: number;
-  team: string;
+  /**
+   * Pasirink komandą iš sąrašo — pavadinimas, mokykla ir logotipas užsipildo automatiškai.
+   */
+  teamRef?: (number | null) | Team;
+  team?: string | null;
   school?: string | null;
   logo?: (number | null) | Media;
   /**
@@ -530,6 +534,7 @@ export interface ScheduleSelect<T extends boolean = true> {
  * via the `definition` "standings_select".
  */
 export interface StandingsSelect<T extends boolean = true> {
+  teamRef?: T;
   team?: T;
   school?: T;
   logo?: T;

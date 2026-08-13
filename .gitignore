@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Figma reference frames (not used on website)
 public/figma-assets/frames/
+.vercel
+.env*

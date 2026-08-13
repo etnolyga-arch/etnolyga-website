@@ -80,15 +80,35 @@ export const getTeam = cache(async (slug: string): Promise<Team | undefined> => 
   return all.find((t) => t.slug === slug);
 });
 
-const mapStanding = (r: { team: string; logo?: unknown; school?: string | null; wins?: number | null; draws?: number | null; losses?: number | null; points?: number | null }): StandingRow => ({
-  team: r.team,
-  logo: mediaUrl(r.logo),
-  school: r.school ?? '',
-  wins: r.wins ?? 0,
-  draws: r.draws ?? 0,
-  losses: r.losses ?? 0,
-  points: r.points ?? 0,
-});
+/**
+ * Rows can come from the newer `teamRef` relationship (Stasik picks a team from
+ * the list) or from the legacy free-text fields. The relationship wins when set,
+ * so name / school / logo always follow the Teams collection.
+ */
+const mapStanding = (r: {
+  team?: string | null;
+  logo?: unknown;
+  school?: string | null;
+  teamRef?: unknown;
+  wins?: number | null;
+  draws?: number | null;
+  losses?: number | null;
+  points?: number | null;
+}): StandingRow => {
+  const ref =
+    r.teamRef && typeof r.teamRef === 'object'
+      ? (r.teamRef as { name?: string; school?: string | null; logo?: unknown })
+      : null;
+  return {
+    team: ref?.name ?? r.team ?? '',
+    logo: mediaUrl(ref?.logo ?? r.logo),
+    school: ref?.school ?? r.school ?? '',
+    wins: r.wins ?? 0,
+    draws: r.draws ?? 0,
+    losses: r.losses ?? 0,
+    points: r.points ?? 0,
+  };
+};
 
 export const getStandings = cache(async (): Promise<{ label: string; rows: StandingRow[] }[]> => {
   const payload = await client();
