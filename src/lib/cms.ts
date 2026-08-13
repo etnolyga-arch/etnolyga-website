@@ -90,13 +90,21 @@ const mapStanding = (r: { team: string; logo?: unknown; school?: string | null; 
   points: r.points ?? 0,
 });
 
-export const getStandings = cache(async (): Promise<{ group1: StandingRow[]; group2: StandingRow[] }> => {
+export const getStandings = cache(async (): Promise<{ label: string; rows: StandingRow[] }[]> => {
   const payload = await client();
-  const { docs } = await payload.find({ collection: 'standings', limit: 100, sort: '-points', depth: 1 });
-  return {
-    group1: docs.filter((d) => d.group === 'group1').map(mapStanding),
-    group2: docs.filter((d) => d.group === 'group2').map(mapStanding),
-  };
+  const { docs } = await payload.find({ collection: 'standings', limit: 100, sort: 'group', depth: 1 });
+  const map = new Map<string, StandingRow[]>();
+  for (const d of docs) {
+    const label = d.group ?? 'Kiti';
+    if (!map.has(label)) map.set(label, []);
+    map.get(label)!.push(mapStanding(d));
+  }
+  return Array.from(map.entries())
+    .sort(([a], [b]) => a.localeCompare(b, 'lt'))
+    .map(([label, rows]) => ({
+      label,
+      rows: rows.slice().sort((a, b) => b.points - a.points),
+    }));
 });
 
 export const getSchedule = cache(async (): Promise<ScheduleEntry[]> => {

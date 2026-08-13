@@ -289,7 +289,10 @@ export interface Standing {
   team: string;
   school?: string | null;
   logo?: (number | null) | Media;
-  group: 'group1' | 'group2';
+  /**
+   * Pvz.: „1-asis pogrūpis", „2-asis pogrūpis", „Finalas", „Pusfinaliai"
+   */
+  group: string;
   wins?: number | null;
   draws?: number | null;
   losses?: number | null;

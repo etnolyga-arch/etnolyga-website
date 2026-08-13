@@ -16,14 +16,11 @@ export const Standings: CollectionConfig = {
     { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logotipas' },
     {
       name: 'group',
-      type: 'select',
-      label: 'Pogrūpis',
+      type: 'text',
+      label: 'Pogrūpis / etapas',
       required: true,
-      defaultValue: 'group1',
-      options: [
-        { label: '1-asis pogrūpis', value: 'group1' },
-        { label: '2-asis pogrūpis', value: 'group2' },
-      ],
+      defaultValue: '1-asis pogrūpis',
+      admin: { description: 'Pvz.: „1-asis pogrūpis", „2-asis pogrūpis", „Finalas", „Pusfinaliai"' },
     },
     {
       type: 'row',
