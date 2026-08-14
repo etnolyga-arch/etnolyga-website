@@ -2,8 +2,12 @@ import type { CollectionConfig } from 'payload';
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: { singular: 'Failas', plural: 'Failai' },
   admin: {
     group: 'Turinys',
+    useAsTitle: 'filename',
+    // Preview first so the library is browsable by eye rather than by filename.
+    defaultColumns: ['filename', 'alt', 'mimeType', 'filesize'],
   },
   access: {
     read: () => true,

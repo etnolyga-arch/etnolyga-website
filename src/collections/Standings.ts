@@ -6,13 +6,16 @@ export const Standings: CollectionConfig = {
   labels: { singular: 'Lentelės eilutė', plural: 'Turnyrinė lentelė' },
   admin: {
     useAsTitle: 'team',
-    defaultColumns: ['team', 'group', 'points', 'sport'],
+    // Logo first so rows are identifiable at a glance; it is kept in sync with
+    // the selected team by the beforeChange hook below.
+    defaultColumns: ['logo', 'team', 'group', 'points'],
     group: 'Turinys',
   },
   access: { read: () => true },
   hooks: {
-    // Nukopijuoja pasirinktos komandos pavadinimą / mokyklą į senuosius laukelius,
-    // kad sąrašo pavadinimas (useAsTitle) ir seni įrašai veiktų vienodai.
+    // Nukopijuoja pasirinktos komandos pavadinimą / mokyklą / logotipą į senuosius
+    // laukelius, kad sąrašo pavadinimas (useAsTitle) ir logotipo stulpelis veiktų
+    // vienodai tiek seniems, tiek naujiems įrašams.
     beforeChange: [
       async ({ data, req }) => {
         if (!data?.teamRef) return data;
@@ -22,6 +25,8 @@ export const Standings: CollectionConfig = {
           if (team) {
             data.team = team.name;
             data.school = team.school;
+            // depth: 0 grąžina tik ID — tiksliai tai, ko reikia upload laukeliui.
+            if (team.logo) data.logo = team.logo;
           }
         } catch {
           // Komanda ištrinta ar nepasiekiama — paliekame tai, kas jau įrašyta.

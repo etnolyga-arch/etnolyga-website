@@ -6,7 +6,9 @@ export const News: CollectionConfig = {
   labels: { singular: 'Naujiena', plural: 'Naujienos' },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'date', 'sport'],
+    // 'date' was listed here but the field is called publishedAt, so that column
+    // rendered nothing. Photo first gives each row a recognisable thumbnail.
+    defaultColumns: ['photo', 'title', 'publishedAt', 'sport'],
     group: 'Turinys',
   },
   access: { read: () => true },

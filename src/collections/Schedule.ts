@@ -6,7 +6,8 @@ export const Schedule: CollectionConfig = {
   labels: { singular: 'Varžybos', plural: 'Tvarkaraštis' },
   admin: {
     useAsTitle: 'location',
-    defaultColumns: ['date', 'group', 'location', 'sport'],
+    // Schedule has no image of its own; showing the teams makes rows identifiable.
+    defaultColumns: ['date', 'group', 'location', 'teamRefs'],
     group: 'Turinys',
   },
   access: { read: () => true },

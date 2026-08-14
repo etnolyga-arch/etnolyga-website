@@ -6,7 +6,8 @@ export const Teams: CollectionConfig = {
   labels: { singular: 'Komanda', plural: 'Komandos' },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'school', 'sport'],
+    // Logo first so teams are identifiable at a glance in the list.
+    defaultColumns: ['logo', 'name', 'school', 'sport'],
     group: 'Turinys',
   },
   access: { read: () => true },
