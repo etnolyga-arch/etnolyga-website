@@ -5,6 +5,7 @@ import Link from 'next/link';
 import FolkPattern from './FolkPattern';
 import { useSport } from '@/lib/SportContext';
 import { siteConfig } from '@/lib/site';
+import { COPYRIGHT_HOLDER } from '@/lib/legal';
 
 export default function Footer() {
   const { selectedSport } = useSport();
@@ -66,6 +67,27 @@ export default function Footer() {
             </div>
           </div>
 
+        </div>
+
+        {/* Legal strip */}
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-[11px] text-white/35">
+            © {new Date().getFullYear()} {COPYRIGHT_HOLDER}. Visos teisės saugomos.
+          </p>
+          <div className="flex gap-5">
+            <Link
+              href="/privatumo-politika"
+              className="text-[11px] text-white/45 hover:text-white transition-colors"
+            >
+              Privatumo politika
+            </Link>
+            <Link
+              href="/naudojimo-salygos"
+              className="text-[11px] text-white/45 hover:text-white transition-colors"
+            >
+              Naudojimo sąlygos
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
