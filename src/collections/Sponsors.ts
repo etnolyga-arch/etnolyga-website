@@ -5,7 +5,8 @@ export const Sponsors: CollectionConfig = {
   labels: { singular: 'Rėmėjas / Partneris', plural: 'Rėmėjai ir partneriai' },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'type'],
+    // Logo thumbnail and clickable website shown straight in the list view.
+    defaultColumns: ['logo', 'name', 'type', 'website'],
     group: 'Turinys',
   },
   access: { read: () => true },
@@ -27,7 +28,10 @@ export const Sponsors: CollectionConfig = {
       name: 'website',
       type: 'text',
       label: 'Svetainė (URL)',
-      admin: { description: 'Pvz.: https://example.com — paspaudus logotipą atsidarys ši nuoroda.' },
+      admin: {
+        description: 'Pvz.: https://example.com — paspaudus logotipą atsidarys ši nuoroda.',
+        components: { Cell: '/components/admin/WebsiteCell#WebsiteCell' },
+      },
     },
     {
       name: 'order',

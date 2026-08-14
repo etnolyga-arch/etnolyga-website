@@ -27,6 +27,10 @@ export default buildConfig({
     meta: {
       titleSuffix: '— Etnolyga',
     },
+    // Lets custom admin components be referenced as '/components/...'.
+    importMap: {
+      baseDir: dirname,
+    },
   },
   collections: [Users, Media, News, Teams, Schedule, Standings, Sponsors],
   globals: [SiteSettings, About],
