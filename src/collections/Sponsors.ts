@@ -11,7 +11,16 @@ export const Sponsors: CollectionConfig = {
   },
   access: { read: () => true },
   fields: [
-    { name: 'name', type: 'text', label: 'Pavadinimas', required: true },
+    {
+      name: 'name',
+      type: 'text',
+      label: 'Pavadinimas',
+      required: true,
+      admin: {
+        placeholder: 'CoinGate',
+        description: 'Rėmėjo ar partnerio pavadinimas. Naudojamas ir kaip logotipo alternatyvus tekstas.',
+      },
+    },
     {
       name: 'type',
       type: 'select',
@@ -23,13 +32,24 @@ export const Sponsors: CollectionConfig = {
         { label: 'Partneris', value: 'partner' },
       ],
     },
-    { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logotipas', required: true },
+    {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Logotipas',
+      required: true,
+      admin: {
+        description:
+          'Logotipas permatomu arba baltu fonu. Rodomas vienodo aukščio juostoje, todėl geriausiai tinka horizontalus, ~400×200 px.',
+      },
+    },
     {
       name: 'website',
       type: 'text',
       label: 'Svetainė (URL)',
       admin: {
-        description: 'Pvz.: https://example.com — paspaudus logotipą atsidarys ši nuoroda.',
+        placeholder: 'https://example.com',
+        description: 'Pilna nuoroda su https:// — paspaudus logotipą ji atsidarys naujame lange.',
         components: { Cell: '/components/admin/WebsiteCell#WebsiteCell' },
       },
     },

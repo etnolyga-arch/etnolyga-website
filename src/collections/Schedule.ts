@@ -11,10 +11,45 @@ export const Schedule: CollectionConfig = {
   },
   access: { read: () => true },
   fields: [
-    { name: 'date', type: 'text', label: 'Data', required: true },
-    { name: 'time', type: 'text', label: 'Laikas' },
-    { name: 'location', type: 'text', label: 'Vieta', required: true },
-    { name: 'group', type: 'text', label: 'Pogrūpis / etapas' },
+    {
+      name: 'date',
+      type: 'text',
+      label: 'Data',
+      required: true,
+      admin: {
+        placeholder: '2026 m. rugsėjo 18 d.',
+        description:
+          'Rašykite tiksliai tokiu formatu: „2026 m. rugsėjo 18 d.“ — kaip parašysite, taip ir matysis svetainėje.',
+      },
+    },
+    {
+      name: 'time',
+      type: 'text',
+      label: 'Laikas',
+      admin: {
+        placeholder: '11:00–18:00',
+        description: 'Laiko intervalas nuo–iki, pvz. „11:00–18:00“. Galima palikti tuščią.',
+      },
+    },
+    {
+      name: 'location',
+      type: 'text',
+      label: 'Vieta',
+      required: true,
+      admin: {
+        placeholder: 'Žirmūnų gimnazija, Vilnius',
+        description: 'Vietos pavadinimas ir miestas.',
+      },
+    },
+    {
+      name: 'group',
+      type: 'text',
+      label: 'Pogrūpis / etapas',
+      admin: {
+        placeholder: '1-asis pogrūpis',
+        description: 'Pvz.: „1-asis pogrūpis“, „2-asis pogrūpis“, „Finalinis turas“.',
+      },
+    },
     {
       name: 'order',
       type: 'number',

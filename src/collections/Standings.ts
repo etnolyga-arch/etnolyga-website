@@ -57,7 +57,11 @@ export const Standings: CollectionConfig = {
       label: 'Pogrūpis / etapas',
       required: true,
       defaultValue: '1-asis pogrūpis',
-      admin: { description: 'Pvz.: „1-asis pogrūpis", „2-asis pogrūpis", „Finalas", „Pusfinaliai"' },
+      admin: {
+        placeholder: '1-asis pogrūpis',
+        description:
+          'Pvz.: „1-asis pogrūpis“, „2-asis pogrūpis“, „Finalinis turas“. Kiekvienam pavadinimui svetainėje sukuriama atskira lentelė, todėl rašykite vienodai visose to paties etapo eilutėse.',
+      },
     },
     {
       type: 'row',
@@ -65,7 +69,14 @@ export const Standings: CollectionConfig = {
         { name: 'wins', type: 'number', label: 'Pergalės', defaultValue: 0, min: 0 },
         { name: 'draws', type: 'number', label: 'Lygiosios', defaultValue: 0, min: 0 },
         { name: 'losses', type: 'number', label: 'Pralaimėjimai', defaultValue: 0, min: 0 },
-        { name: 'points', type: 'number', label: 'Taškai', defaultValue: 0, min: 0 },
+        {
+          name: 'points',
+          type: 'number',
+          label: 'Taškai',
+          defaultValue: 0,
+          min: 0,
+          admin: { description: 'Pagal taškus komandos rikiuojamos lentelėje (daugiausia — viršuje).' },
+        },
       ],
     },
     sportField,
