@@ -6,8 +6,11 @@ const isAdmin: Access = ({ req }) => req.user?.role === 'admin';
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
+  // Was the only untranslated entry in an otherwise Lithuanian sidebar.
+  labels: { singular: 'Naudotojas', plural: 'Naudotojai' },
   admin: {
     useAsTitle: 'email',
+    defaultColumns: ['email', 'name', 'role'],
     group: 'Administravimas',
   },
   access: {

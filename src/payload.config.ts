@@ -42,6 +42,15 @@ export default buildConfig({
   i18n: {
     supportedLanguages: { lt },
     fallbackLanguage: 'lt',
+    translations: {
+      lt: {
+        general: {
+          // Payload's default is „Neužpavadinamas", which shows as the heading
+          // on every new record and reads like an error to a non-technical user.
+          untitled: 'Naujas įrašas',
+        },
+      },
+    },
   },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
