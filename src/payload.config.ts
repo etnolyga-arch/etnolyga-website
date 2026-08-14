@@ -31,6 +31,10 @@ export default buildConfig({
     importMap: {
       baseDir: dirname,
     },
+    components: {
+      // Payload has no built-in way back to the public site.
+      afterNavLinks: ['/components/admin/ViewSiteLink#ViewSiteLink'],
+    },
   },
   collections: [Users, Media, News, Teams, Schedule, Standings, Sponsors],
   globals: [SiteSettings, About],
