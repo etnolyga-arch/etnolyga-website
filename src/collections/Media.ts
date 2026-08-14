@@ -10,6 +10,8 @@ export const Media: CollectionConfig = {
   },
   upload: {
     // Stored in Vercel Blob (see payload.config.ts storage plugin).
+    // 'image/*' covers image/svg+xml, so SVG logos upload like any other image.
+    // Rendering them also requires images.dangerouslyAllowSVG in next.config.ts.
     mimeTypes: ['image/*'],
   },
   fields: [
