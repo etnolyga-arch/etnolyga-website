@@ -4,13 +4,13 @@ import pg from 'pg';
  * Fills the `website` column on the sponsors table so the logos become links
  * (see SponsorsRow.tsx — it only wraps the logo in an <a> when website is set).
  *
- * Each URL below was verified to return HTTP 200 before being added. "Veri Beri"
- * is deliberately left empty: it has no official site, only a Facebook page.
+ * Each URL below was verified to return HTTP 200 before being added.
  *
  * Note: the record named "Vytis" is actually Marijampolės savivaldybė — the name
  * came from the coat-of-arms filename, not the partner.
  */
 const LINKS = [
+  { match: 'Veri Beri', url: 'https://veriberi.lt' },
   { match: 'Etninės', url: 'https://www.ekgt.lt' },
   { match: 'Vytis', url: 'https://www.marijampole.lt' },
   { match: 'Vilnius', url: 'https://vilnius.lt' },
