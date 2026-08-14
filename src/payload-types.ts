@@ -191,18 +191,33 @@ export interface Media {
  */
 export interface News {
   id: number;
+  /**
+   * Naujienos antraštė. Rekomenduojama iki ~80 simbolių, kad gražiai tilptų kortelėje.
+   */
   title: string;
   /**
-   * URL dalis, pvz. „stovykla-trakuose".
+   * URL dalis, pvz. „stovykla-trakuose“. Tik mažosios raidės be lietuviškų raidžių, tarpus keiskite brūkšneliais. Turi būti unikalus.
    */
   slug: string;
   /**
    * Naujienos data (svetainėje rodoma lietuviškai). Naujausios rodomos viršuje.
    */
   publishedAt: string;
+  /**
+   * Trumpas 1–2 sakinių aprašymas. Rodomas naujienų sąraše po antrašte, ne pačioje naujienoje.
+   */
   excerpt: string;
+  /**
+   * Horizontali nuotrauka, rekomenduojama ~1200×800 px. Rodoma ir sąraše, ir naujienos viršuje.
+   */
   photo: number | Media;
+  /**
+   * Pilnas naujienos tekstas. Pastraipas skirkite tuščia eilute.
+   */
   body: string;
+  /**
+   * Kaip atrodys naujienos puslapis. Nesate tikri — palikite 1 variantą.
+   */
   variant?: ('1' | '2') | null;
   /**
    * Kuriam sportui priklauso šis įrašas.
@@ -217,16 +232,43 @@ export interface News {
  */
 export interface Team {
   id: number;
+  /**
+   * Komandos pavadinimas be žodžio „Komanda“ — jis pridedamas automatiškai.
+   */
   name: string;
+  /**
+   * URL dalis, pvz. „peledziukai“. Tik mažosios raidės be lietuviškų raidžių, tarpus keiskite brūkšneliais. Turi būti unikalus.
+   */
   slug: string;
+  /**
+   * Mokyklos pavadinimas.
+   */
   school: string;
+  /**
+   * Kvadratinis logotipas permatomu arba baltu fonu, rekomenduojama ~400×400 px. Rodomas apskritime.
+   */
   logo?: (number | null) | Media;
+  /**
+   * Horizontali bendra komandos nuotrauka, rekomenduojama ~1200×800 px.
+   */
   photo?: (number | null) | Media;
+  /**
+   * Trenerio vardas ir pavardė.
+   */
   coach?: string | null;
+  /**
+   * Pridėkite po vieną žaidėją. Tvarką galima keisti tempiant.
+   */
   players?:
     | {
+        /**
+         * Žaidėjo vardas ir pavardė.
+         */
         name: string;
         role: 'Žaidėjas' | 'Vartininkas' | 'Treneris' | 'Puolėjas' | 'Gynėjas';
+        /**
+         * Portretinė žaidėjo nuotrauka, rekomenduojama kvadratinė ~600×600 px.
+         */
         photo?: (number | null) | Media;
         /**
          * Žaidėjo marškinėlių numeris.
@@ -239,7 +281,13 @@ export interface Team {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Citata, rodoma komandos puslapyje. Rašykite be kabučių — jos pridedamos automatiškai.
+   */
   quote?: string | null;
+  /**
+   * Kas pasakė citatą.
+   */
   quoteAuthor?: string | null;
   /**
    * Kuriam sportui priklauso šis įrašas.
@@ -254,9 +302,21 @@ export interface Team {
  */
 export interface Schedule {
   id: number;
+  /**
+   * Pasirinkite datą iš kalendoriaus. Svetainėje ji automatiškai rodoma lietuviškai, pvz. „2026 m. rugsėjo 18 d.“.
+   */
   date: string;
+  /**
+   * Laiko intervalas nuo–iki, pvz. „11:00–18:00“. Galima palikti tuščią.
+   */
   time?: string | null;
+  /**
+   * Vietos pavadinimas ir miestas.
+   */
   location: string;
+  /**
+   * Pvz.: „1-asis pogrūpis“, „2-asis pogrūpis“, „Finalinis turas“.
+   */
   group?: string | null;
   /**
    * Mažesnis skaičius rodomas pirmiau.
@@ -294,12 +354,15 @@ export interface Standing {
   school?: string | null;
   logo?: (number | null) | Media;
   /**
-   * Pvz.: „1-asis pogrūpis", „2-asis pogrūpis", „Finalas", „Pusfinaliai"
+   * Pvz.: „1-asis pogrūpis“, „2-asis pogrūpis“, „Finalinis turas“. Kiekvienam pavadinimui svetainėje sukuriama atskira lentelė, todėl rašykite vienodai visose to paties etapo eilutėse.
    */
   group: string;
   wins?: number | null;
   draws?: number | null;
   losses?: number | null;
+  /**
+   * Pagal taškus komandos rikiuojamos lentelėje (daugiausia — viršuje).
+   */
   points?: number | null;
   /**
    * Kuriam sportui priklauso šis įrašas.
@@ -314,11 +377,17 @@ export interface Standing {
  */
 export interface Sponsor {
   id: number;
+  /**
+   * Rėmėjo ar partnerio pavadinimas. Naudojamas ir kaip logotipo alternatyvus tekstas.
+   */
   name: string;
   type: 'sponsor' | 'partner';
+  /**
+   * Logotipas permatomu arba baltu fonu. Rodomas vienodo aukščio juostoje, todėl geriausiai tinka horizontalus, ~400×200 px.
+   */
   logo: number | Media;
   /**
-   * Pvz.: https://example.com — paspaudus logotipą atsidarys ši nuoroda.
+   * Pilna nuoroda su https:// — paspaudus logotipą ji atsidarys naujame lange.
    */
   website?: string | null;
   /**
@@ -606,20 +675,65 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteSetting {
   id: number;
+  /**
+   * Plati horizontali nuotrauka, rekomenduojama ne mažiau kaip 1920×1080 px. Ant jos dedamas tamsus permatomas sluoksnis, todėl tinka ir šviesios nuotraukos.
+   */
   heroImage?: (number | null) | Media;
+  /**
+   * Vienas trumpas sakinys po pavadinimu. Rekomenduojama iki ~120 simbolių.
+   */
   heroSubtitle?: string | null;
+  /**
+   * Sekcijos antraštė.
+   */
   etnolygaTitle?: string | null;
+  /**
+   * Pirmoji pastraipa. Rodoma iš karto po antrašte.
+   */
   etnolygaDescription1?: string | null;
+  /**
+   * Antroji pastraipa. Galima palikti tuščią — tada rodoma tik pirmoji.
+   */
   etnolygaDescription2?: string | null;
+  /**
+   * Horizontali nuotrauka šalia teksto, rekomenduojama ~1200×800 px.
+   */
   etnolygaPhoto?: (number | null) | Media;
+  /**
+   * Sekcijos antraštė.
+   */
   organizerTitle?: string | null;
+  /**
+   * Trumpas tekstas apie organizatorius (LEK).
+   */
   organizerDescription?: string | null;
+  /**
+   * Dėmesio: ši nuotrauka rodoma ir Organizatorių sekcijoje, ir Kontaktų puslapyje. Rekomenduojama ~1200×800 px.
+   */
   organizerPhoto?: (number | null) | Media;
+  /**
+   * Pagrindinis kontaktinis el. paštas.
+   */
   email?: string | null;
+  /**
+   * Su šalies kodu, pvz. „+370 600 00000“.
+   */
   phone?: string | null;
+  /**
+   * Pvz. „I–V 9:00–17:00“.
+   */
   hours?: string | null;
+  /**
+   * Pilna nuoroda su https://. Svetainėje rodoma be „https://“.
+   */
   facebook?: string | null;
+  /**
+   * Pilna nuoroda su https://.
+   */
   instagram?: string | null;
+  /**
+   * Pilna nuoroda su https://.
+   */
   youtube?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -630,35 +744,77 @@ export interface SiteSetting {
  */
 export interface About {
   id: number;
+  /**
+   * Pridėkite po vieną įvykį. Tvarką galima keisti tempiant.
+   */
   timeline?:
     | {
+        /**
+         * Metai arba laikotarpis, pvz. „1935 m.“ arba „XX a. pr.“.
+         */
         period: string;
+        /**
+         * Kas tuo metu įvyko. Keli sakiniai.
+         */
         text: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Žaidimo aprašymo tekstas.
+   */
   gameDescription?:
     | {
+        /**
+         * Viena pastraipa. Ilgesnį tekstą skaidykite į kelias pastraipas.
+         */
         text: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Horizontali nuotrauka šalia teksto, rekomenduojama ~1200×800 px.
+   */
   gameDescriptionPhoto?: (number | null) | Media;
+  /**
+   * Tekstas apie ripką šiandien.
+   */
   ripkaToday?:
     | {
+        /**
+         * Viena pastraipa. Ilgesnį tekstą skaidykite į kelias pastraipas.
+         */
         text: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Horizontali nuotrauka šalia teksto, rekomenduojama ~1200×800 px.
+   */
   ripkaTodayPhoto?: (number | null) | Media;
+  /**
+   * Pilna nuoroda su https://. Atidaroma paspaudus mygtuką šioje sekcijoje.
+   */
   federationUrl?: string | null;
+  /**
+   * Trumpas taisyklių aprašymas.
+   */
   rules?:
     | {
+        /**
+         * Viena pastraipa. Ilgesnį tekstą skaidykite į kelias pastraipas.
+         */
         text: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Horizontali nuotrauka šalia teksto, rekomenduojama ~1200×800 px.
+   */
   rulesPhoto?: (number | null) | Media;
+  /**
+   * Pilna nuoroda į taisyklių dokumentą, su https://.
+   */
   rulesUrl?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;

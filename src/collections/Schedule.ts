@@ -13,13 +13,13 @@ export const Schedule: CollectionConfig = {
   fields: [
     {
       name: 'date',
-      type: 'text',
+      type: 'date',
       label: 'Data',
       required: true,
       admin: {
-        placeholder: '2026 m. rugsėjo 18 d.',
+        date: { pickerAppearance: 'dayOnly', displayFormat: 'yyyy-MM-dd' },
         description:
-          'Rašykite tiksliai tokiu formatu: „2026 m. rugsėjo 18 d.“ — kaip parašysite, taip ir matysis svetainėje.',
+          'Pasirinkite datą iš kalendoriaus. Svetainėje ji automatiškai rodoma lietuviškai, pvz. „2026 m. rugsėjo 18 d.“.',
       },
     },
     {
