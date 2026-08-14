@@ -33,6 +33,16 @@ const ltDate = new Intl.DateTimeFormat('lt-LT', {
 });
 const formatLtDate = (iso?: string | null): string => (iso ? ltDate.format(new Date(iso)) : '');
 
+/**
+ * Schedule dates are mid-migration from free text to a real date field.
+ * ISO values get formatted to the Lithuanian long date; anything else is legacy
+ * hand-typed text and passes through unchanged. Keeps output identical either way.
+ */
+const formatScheduleDate = (value?: string | null): string => {
+  if (!value) return '';
+  return /^\d{4}-\d{2}-\d{2}/.test(value) ? formatLtDate(value) : value;
+};
+
 export const getNews = cache(async (): Promise<NewsItem[]> => {
   const payload = await client();
   // Newest first.
@@ -141,7 +151,7 @@ export const getSchedule = cache(async (): Promise<ScheduleEntry[]> => {
         })
       : null;
     return {
-      date: s.date,
+      date: formatScheduleDate(s.date),
       time: s.time ?? '',
       location: s.location,
       group: s.group ?? '',
