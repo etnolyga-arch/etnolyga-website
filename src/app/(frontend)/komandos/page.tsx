@@ -1,13 +1,13 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 import SponsorsSection from "@/components/SponsorsSection";
-import { getTeams } from '@/lib/cms';
+import { getTeams, getSiteSettings } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
 export const revalidate = 30;
 
 export default async function KomandosPage() {
-  const teams = await getTeams();
+  const [teams, settings] = await Promise.all([getTeams(), getSiteSettings()]);
   return (
     <div>
       {/* Hero */}
@@ -18,7 +18,7 @@ export default async function KomandosPage() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Komandos</h1>
           <div className="flex items-center gap-2 text-xs pb-1">
             <span className="text-white/50">Sezonas:</span>
-            <span className="border border-green-light text-green-light px-3 py-1">{siteConfig.pages.komandos.season}</span>
+            <span className="border border-green-light text-green-light px-3 py-1">{settings.season || siteConfig.pages.komandos.season}</span>
           </div>
         </div>
       </section>

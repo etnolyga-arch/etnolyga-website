@@ -67,10 +67,16 @@ export const Schedule: CollectionConfig = {
       admin: { description: 'Pasirink komandas iš sąrašo.' },
     },
     {
+      // Was hidden, which meant leftover demo rows still rendered on the site
+      // (getSchedule falls back to this when teamRefs is empty) with no way for
+      // an editor to see or remove them. Visible now so it can be cleared.
       name: 'teams',
       type: 'array',
-      label: 'Komandos (senas laukelis)',
-      admin: { hidden: true },
+      label: 'Senas komandų sąrašas (ištrinkite)',
+      admin: {
+        description:
+          'Senas laukelis iš pradinės svetainės versijos. Jis rodomas tik tada, kai viršuje nepasirinkta nė viena komanda. Ištrinkite šias eilutes ir naudokite laukelį „Komandos“.',
+      },
       fields: [
         { name: 'name', type: 'text', label: 'Pavadinimas', required: true },
         { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logotipas' },

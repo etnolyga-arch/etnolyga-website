@@ -326,6 +326,9 @@ export interface Schedule {
    * Pasirink komandas iš sąrašo.
    */
   teamRefs?: (number | Team)[] | null;
+  /**
+   * Senas laukelis iš pradinės svetainės versijos. Jis rodomas tik tada, kai viršuje nepasirinkta nė viena komanda. Ištrinkite šias eilutes ir naudokite laukelį „Komandos“.
+   */
   teams?:
     | {
         name: string;
@@ -676,6 +679,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface SiteSetting {
   id: number;
   /**
+   * Rodoma Tvarkaraščio, Turnyrinės lentelės ir Komandų puslapių viršuje. Pakeitus atsinaujina visuose trijuose.
+   */
+  season?: string | null;
+  /**
    * Plati horizontali nuotrauka, rekomenduojama ne mažiau kaip 1920×1080 px. Ant jos dedamas tamsus permatomas sluoksnis, todėl tinka ir šviesios nuotraukos.
    */
   heroImage?: (number | null) | Media;
@@ -824,6 +831,7 @@ export interface About {
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
+  season?: T;
   heroImage?: T;
   heroSubtitle?: T;
   etnolygaTitle?: T;

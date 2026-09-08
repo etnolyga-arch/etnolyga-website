@@ -1,7 +1,7 @@
 ﻿import Image from "next/image";
 import SponsorsSection from "@/components/SponsorsSection";
 import { type StandingRow } from '@/lib/standings';
-import { getStandings } from '@/lib/cms';
+import { getStandings, getSiteSettings } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
 function StandingsTable({ label, standings }: { label: string; standings: StandingRow[] }) {
@@ -51,7 +51,7 @@ function StandingsTable({ label, standings }: { label: string; standings: Standi
 export const revalidate = 30;
 
 export default async function TurnyrineLetelePage() {
-  const groups = await getStandings();
+  const [groups, settings] = await Promise.all([getStandings(), getSiteSettings()]);
   return (
     <div>
       {/* Hero */}
@@ -62,7 +62,7 @@ export default async function TurnyrineLetelePage() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Turnyrinė lentelė</h1>
           <div className="flex items-center gap-2 text-xs pb-1">
             <span className="text-white/50">Sezonas:</span>
-            <span className="border border-green-light text-green-light px-3 py-1">{siteConfig.pages.turnyrineLentele.season} ▾</span>
+            <span className="border border-green-light text-green-light px-3 py-1">{settings.season || siteConfig.pages.turnyrineLentele.season} ▾</span>
           </div>
         </div>
       </section>

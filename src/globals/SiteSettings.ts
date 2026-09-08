@@ -7,6 +7,17 @@ export const SiteSettings: GlobalConfig = {
   access: { read: () => true },
   fields: [
     {
+      name: 'season',
+      type: 'text',
+      label: 'Sezonas',
+      defaultValue: '2025–2026 m. sezonas',
+      admin: {
+        placeholder: '2025–2026 m. sezonas',
+        description:
+          'Rodoma Tvarkaraščio, Turnyrinės lentelės ir Komandų puslapių viršuje. Pakeitus atsinaujina visuose trijuose.',
+      },
+    },
+    {
       type: 'collapsible',
       label: 'Pagrindinis (Hero)',
       admin: { description: 'Didelis blokas pačiame pradinio puslapio viršuje.' },

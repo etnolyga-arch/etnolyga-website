@@ -1,12 +1,12 @@
 ﻿import Image from "next/image";
 import SponsorsSection from "@/components/SponsorsSection";
-import { getSchedule } from '@/lib/cms';
+import { getSchedule, getSiteSettings } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
 
 export const revalidate = 30;
 
 export default async function TvarkarastisPage() {
-  const schedule = await getSchedule();
+  const [schedule, settings] = await Promise.all([getSchedule(), getSiteSettings()]);
   return (
     <div>
       {/* Hero */}
@@ -14,7 +14,7 @@ export default async function TvarkarastisPage() {
         <Image src={siteConfig.pages.tvarkarastis.heroImage} alt="Tvarkaraštis" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24">
-          <p className="text-[11px] font-semibold tracking-widest uppercase text-green-light mb-3">{siteConfig.pages.tvarkarastis.season}</p>
+          <p className="text-[11px] font-semibold tracking-widest uppercase text-green-light mb-3">{settings.season || siteConfig.pages.tvarkarastis.season}</p>
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Tvarkaraštis</h1>
         </div>
       </section>

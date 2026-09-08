@@ -195,6 +195,7 @@ export const getSiteSettings = cache(async () => {
   const s = await payload.findGlobal({ slug: 'site-settings', depth: 1 });
   const organizerPhoto = mediaUrl(s.organizerPhoto);
   return {
+    season: s.season ?? '',
     heroImage: mediaUrl(s.heroImage),
     heroSubtitle: s.heroSubtitle ?? '',
     etnolyga: {
