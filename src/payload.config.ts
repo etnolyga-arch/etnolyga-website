@@ -6,7 +6,6 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { lt } from '@payloadcms/translations/languages/lt';
 import { buildConfig } from 'payload';
-import sharp from 'sharp';
 
 import { Users } from './collections/Users';
 import { Media } from './collections/Media';
@@ -64,7 +63,11 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL,
     },
   }),
-  sharp,
+  // sharp intentionally omitted: on Vercel its linux-x64 native binary fails to
+  // load (ERR_DLOPEN_FAILED, libvips-cpp.so), which took every API route and the
+  // whole admin down with 500s. No collection defines imageSizes, so sharp was
+  // doing no work here. Re-add it only alongside actual resizing, and verify the
+  // binary loads on Vercel first.
   plugins: [
     vercelBlobStorage({
       enabled: true,
