@@ -152,12 +152,43 @@ export const getSchedule = cache(async (): Promise<ScheduleEntry[]> => {
       : null;
     return {
       date: formatScheduleDate(s.date),
+      dateISO: typeof s.date === 'string' ? s.date : undefined,
       time: s.time ?? '',
       location: s.location,
       group: s.group ?? '',
       teams: teamsFromRefs ?? (s.teams ?? []).map((tm) => ({ name: tm.name, logo: mediaUrl(tm.logo) })),
     };
   });
+});
+
+/** Today in Vilnius as "YYYY-MM-DD", so the switchover happens on the local day. */
+const todayInVilnius = (): string =>
+  new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Vilnius',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+
+/**
+ * The event shown in the homepage "Artimiausios varžybos" block, including its
+ * map. Picks the soonest event that has not happened yet, so it advances on its
+ * own as dates pass and follows the venue when the final is somewhere else.
+ *
+ * Once every event is in the past it keeps showing the last one rather than
+ * leaving an empty block on the homepage. Entries with no date fall back to
+ * `order`, which is how the whole list used to be picked.
+ */
+export const getNextMatch = cache(async (): Promise<ScheduleEntry | undefined> => {
+  const all = await getSchedule();
+  if (all.length === 0) return undefined;
+
+  const dated = all.filter((e) => e.dateISO);
+  if (dated.length === 0) return all[0];
+
+  const byDate = [...dated].sort((a, b) => a.dateISO!.localeCompare(b.dateISO!));
+  const today = todayInVilnius();
+  return byDate.find((e) => e.dateISO!.slice(0, 10) >= today) ?? byDate[byDate.length - 1];
 });
 
 export const getSponsors = cache(async (): Promise<{ sponsors: SponsorItem[]; partners: SponsorItem[] }> => {

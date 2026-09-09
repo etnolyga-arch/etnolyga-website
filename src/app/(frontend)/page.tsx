@@ -4,18 +4,19 @@ import SponsorsSection from "@/components/SponsorsSection";
 import { getTeams } from '@/lib/cms';
 import { getNews } from '@/lib/cms';
 import { getSiteSettings } from '@/lib/cms';
-import { getSchedule } from '@/lib/cms';
+import { getNextMatch } from '@/lib/cms';
 
 export const revalidate = 30;
 
 export default async function Home() {
-  const [siteConfig, teams, news, schedule] = await Promise.all([
+  const [siteConfig, teams, news, nextMatch] = await Promise.all([
     getSiteSettings(),
     getTeams(),
     getNews(),
-    getSchedule(),
+    // Soonest event that has not happened yet; falls back to the last one so
+    // this block never empties once the season is over.
+    getNextMatch(),
   ]);
-  const nextMatch = schedule[0];
   return (
     <div>
       <section className="relative min-h-[640px] overflow-hidden -mt-14">
@@ -62,8 +63,8 @@ export default async function Home() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 items-stretch">
           <div className="py-16 px-8 md:px-10">
             <h2 className="font-display text-3xl font-semibold text-graphite mb-2">Artimiausios varžybos</h2>
-            <p className="text-sm text-graphite/55 mb-1">{nextMatch.date} {nextMatch.time}</p>
-            <p className="text-sm text-graphite/55 mb-8">{nextMatch.location}</p>
+            <p className="text-sm text-graphite/55 mb-1">{nextMatch?.date} {nextMatch?.time}</p>
+            <p className="text-sm text-graphite/55 mb-8">{nextMatch?.location}</p>
             <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/35 mb-5">Susitinka 1-o pogrūpio komandos:</p>
             <div className="space-y-4 mb-10">
               {teams.map((team) => (

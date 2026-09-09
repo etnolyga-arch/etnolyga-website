@@ -1,7 +1,10 @@
 import { teams } from './teams';
 
 export type ScheduleEntry = {
+  /** Display string, already formatted in Lithuanian (e.g. "2026 m. spalio 2 d."). */
   date: string;
+  /** Raw ISO value, kept so dates can be compared. Absent on legacy static data. */
+  dateISO?: string;
   time: string;
   location: string;
   group: string;
