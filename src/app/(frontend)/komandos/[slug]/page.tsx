@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import TeamLogo from '@/components/TeamLogo';
 import Link from 'next/link';
 import SponsorsSection from '@/components/SponsorsSection';
 import { getTeam, getTeams } from '@/lib/cms';
@@ -39,15 +40,19 @@ export default async function KomandaPage({
     <div>
       {/* Hero — full-bleed team photo */}
       <section className="relative min-h-[440px] flex items-end overflow-hidden -mt-14">
-        <Image src={team.photo} alt={`Komanda ${team.name}`} fill className="object-cover object-center" priority sizes="100vw" />
+        {team.photo ? (
+          <Image src={team.photo} alt={team.name} fill className="object-cover object-center" priority sizes="100vw" />
+        ) : (
+          <div className="absolute inset-0 bg-green-dark" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-12 pt-24 flex items-end gap-6">
-          <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/80 bg-white">
-            <Image src={team.logo} alt={team.name} width={64} height={64} className="w-full h-full object-contain" />
-          </div>
+          <TeamLogo src={team.logo} name={team.name} size={64} className="border-2 border-white/80" />
           <div>
-            <p className="text-xs tracking-widest uppercase text-white/60 mb-1">{team.school}</p>
-            <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Komanda {team.name}</h1>
+            {team.school && team.school !== team.name && (
+              <p className="text-xs tracking-widest uppercase text-white/60 mb-1">{team.school}</p>
+            )}
+            <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">{team.name}</h1>
           </div>
         </div>
       </section>
@@ -131,15 +136,19 @@ export default async function KomandaPage({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
             {otherTeams.map((t) => (
               <Link key={t.slug} href={`/komandos/${t.slug}`} className="relative overflow-hidden group" style={{ aspectRatio: '4/3' }}>
-                <Image src={t.photo} alt={t.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="25vw" />
+                {t.photo ? (
+                  <Image src={t.photo} alt={t.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="25vw" />
+                ) : (
+                  <div className="absolute inset-0 bg-green-dark/80" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 flex items-end gap-2">
-                  <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-white/70 bg-white">
-                    <Image src={t.logo} alt={t.name} width={28} height={28} className="w-full h-full object-contain" />
-                  </div>
+                  <TeamLogo src={t.logo} name={t.name} size={28} className="border border-white/70" />
                   <div>
                     <p className="text-[11px] font-semibold text-white leading-tight">{t.name}</p>
-                    <p className="text-[10px] text-white/55 leading-tight">{t.school}</p>
+                    {t.school && t.school !== t.name && (
+                      <p className="text-[10px] text-white/55 leading-tight">{t.school}</p>
+                    )}
                   </div>
                 </div>
               </Link>

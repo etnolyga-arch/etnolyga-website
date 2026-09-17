@@ -1,4 +1,5 @@
 ﻿import Image from "next/image";
+import TeamLogo from '@/components/TeamLogo';
 import Link from "next/link";
 import SponsorsSection from "@/components/SponsorsSection";
 import { getTeams, getSiteSettings } from '@/lib/cms';
@@ -35,16 +36,20 @@ export default async function KomandosPage() {
                 className="relative block overflow-hidden group"
                 style={{ aspectRatio: "4/3" }}
               >
-                <Image src={team.photo} alt={team.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                {team.photo ? (
+                  <Image src={team.photo} alt={team.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                ) : (
+                  <div className="absolute inset-0 bg-green-dark/80" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/80 bg-white">
-                      <Image src={team.logo} alt={team.school} width={36} height={36} className="w-full h-full object-contain" />
-                    </div>
+                    <TeamLogo src={team.logo} name={team.name} size={36} className="border-2 border-white/80" />
                     <div>
-                      <p className="text-sm font-semibold text-white leading-tight">Komanda {team.name}</p>
-                      <p className="text-[11px] text-white/65">{team.school}</p>
+                      <p className="text-sm font-semibold text-white leading-tight">{team.name}</p>
+                      {team.school && team.school !== team.name && (
+                        <p className="text-[11px] text-white/65">{team.school}</p>
+                      )}
                     </div>
                   </div>
                 </div>

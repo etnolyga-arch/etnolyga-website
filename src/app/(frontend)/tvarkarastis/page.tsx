@@ -1,4 +1,5 @@
 ﻿import Image from "next/image";
+import TeamLogo from '@/components/TeamLogo';
 import SponsorsSection from "@/components/SponsorsSection";
 import { getSchedule, getSiteSettings } from '@/lib/cms';
 import { siteConfig } from '@/lib/site';
@@ -37,11 +38,7 @@ export default async function TvarkarastisPage() {
                 <ul className="space-y-3">
                   {match.teams.map((team) => (
                     <li key={team.name} className="flex items-center gap-3">
-                      {team.logo && (
-                        <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 border border-graphite/10 bg-white">
-                          <Image src={team.logo} alt={team.name} width={28} height={28} className="w-full h-full object-contain" />
-                        </div>
-                      )}
+                      <TeamLogo src={team.logo} name={team.name} size={28} />
                       <span className="text-sm text-graphite">{team.name}</span>
                     </li>
                   ))}
