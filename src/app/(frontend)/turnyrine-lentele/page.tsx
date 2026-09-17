@@ -26,12 +26,20 @@ function StandingsTable({ label, standings }: { label: string; standings: Standi
                 <td className="py-3 px-4 text-graphite/40 font-semibold text-xs">{i + 1}</td>
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-graphite/10 bg-white">
-                      <Image src={row.logo} alt={row.team} width={32} height={32} className="w-full h-full object-contain" />
-                    </div>
+                    {row.logo ? (
+                      <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-graphite/10 bg-white">
+                        <Image src={row.logo} alt={row.team} width={32} height={32} className="w-full h-full object-contain" />
+                      </div>
+                    ) : (
+                      <div className="w-8 h-8 rounded-full flex-shrink-0 border border-graphite/10 bg-graphite/5 flex items-center justify-center text-[11px] font-semibold text-graphite/40">
+                        {row.team.slice(0, 1).toUpperCase()}
+                      </div>
+                    )}
                     <div>
-                      <p className="font-semibold text-graphite text-sm leading-tight">Komanda {row.team}</p>
-                      <p className="text-[11px] text-graphite/50">{row.school}</p>
+                      <p className="font-semibold text-graphite text-sm leading-tight">{row.team}</p>
+                      {row.school && row.school !== row.team && (
+                        <p className="text-[11px] text-graphite/50">{row.school}</p>
+                      )}
                     </div>
                   </div>
                 </td>
@@ -58,12 +66,15 @@ export default async function TurnyrineLetelePage() {
       <section className="relative min-h-[240px] flex items-end overflow-hidden -mt-14">
         <Image src={siteConfig.pages.turnyrineLentele.heroImage} alt="Turnyrinė lentelė" fill className="object-cover object-top" priority />
         <div className="absolute inset-0 bg-black/55" />
-        <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24 flex items-end justify-between">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24 flex flex-wrap items-end justify-between gap-y-3">
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Turnyrinė lentelė</h1>
-          <div className="flex items-center gap-2 text-xs pb-1">
-            <span className="text-white/50">Sezonas:</span>
-            <span className="border border-green-light text-green-light px-3 py-1">{settings.season || siteConfig.pages.turnyrineLentele.season} ▾</span>
-          </div>
+          {/* Hidden entirely when Sezonas is cleared in the CMS. */}
+          {settings.season && (
+            <div className="flex items-center gap-2 text-xs pb-1">
+              <span className="text-white/50">Sezonas:</span>
+              <span className="border border-green-light text-green-light px-3 py-1">{settings.season}</span>
+            </div>
+          )}
         </div>
       </section>
 

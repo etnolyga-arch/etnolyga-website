@@ -74,6 +74,10 @@ export default buildConfig({
       collections: {
         [Media.slug]: true,
       },
+      // Uploads go straight from the browser to Blob storage instead of through
+      // a serverless function, whose request body is capped at ~4.5MB on every
+      // Vercel plan. That cap is why anything around 5MB failed to upload.
+      clientUploads: true,
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],

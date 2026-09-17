@@ -1,7 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 import SponsorsSection from "@/components/SponsorsSection";
-import { getTeams } from '@/lib/cms';
 import { getNews } from '@/lib/cms';
 import { getSiteSettings } from '@/lib/cms';
 import { getNextMatch } from '@/lib/cms';
@@ -9,9 +8,8 @@ import { getNextMatch } from '@/lib/cms';
 export const revalidate = 30;
 
 export default async function Home() {
-  const [siteConfig, teams, news, nextMatch] = await Promise.all([
+  const [siteConfig, news, nextMatch] = await Promise.all([
     getSiteSettings(),
-    getTeams(),
     getNews(),
     // Soonest event that has not happened yet; falls back to the last one so
     // this block never empties once the season is over.
@@ -65,20 +63,31 @@ export default async function Home() {
             <h2 className="font-display text-3xl font-semibold text-graphite mb-2">Artimiausios varžybos</h2>
             <p className="text-sm text-graphite/55 mb-1">{nextMatch?.date} {nextMatch?.time}</p>
             <p className="text-sm text-graphite/55 mb-8">{nextMatch?.location}</p>
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/35 mb-5">Susitinka 1-o pogrūpio komandos:</p>
-            <div className="space-y-4 mb-10">
-              {teams.map((team) => (
-                <div key={team.slug} className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-graphite/10 bg-white">
-                    <Image src={team.logo} alt={team.school} width={36} height={36} className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-graphite leading-tight">Komanda {team.name}</p>
-                    <p className="text-[11px] text-graphite/50 leading-tight">{team.school}</p>
-                  </div>
+            {/* Teams actually playing THIS event, not every team in the league.
+                The heading follows the event's own stage name. */}
+            {(nextMatch?.teams?.length ?? 0) > 0 && (
+              <>
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-graphite/35 mb-5">
+                  {nextMatch?.group ? `Susitinka: ${nextMatch.group}` : 'Susitinkančios komandos:'}
+                </p>
+                <div className="space-y-4 mb-10">
+                  {nextMatch!.teams.map((team, i) => (
+                    <div key={`${team.name}-${i}`} className="flex items-center gap-3">
+                      {team.logo ? (
+                        <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-graphite/10 bg-white">
+                          <Image src={team.logo} alt={team.name} width={36} height={36} className="w-full h-full object-contain" />
+                        </div>
+                      ) : (
+                        <div className="w-9 h-9 rounded-full flex-shrink-0 border border-graphite/10 bg-graphite/5 flex items-center justify-center text-xs font-semibold text-graphite/40">
+                          {team.name.slice(0, 1).toUpperCase()}
+                        </div>
+                      )}
+                      <p className="text-sm font-semibold text-graphite leading-tight">{team.name}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
             <Link href="/tvarkarastis" className="inline-flex items-center gap-2 text-sm font-semibold text-green-dark hover:underline">Detalus tvarkaraštis <img src="/images/ui/arrows/link-to.png" alt="" width={20} height={20} /></Link>
           </div>
           <div className="relative min-h-[400px] flex flex-col">

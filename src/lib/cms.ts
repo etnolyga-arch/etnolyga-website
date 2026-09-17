@@ -91,9 +91,12 @@ export const getTeam = cache(async (slug: string): Promise<Team | undefined> => 
 });
 
 /**
- * Rows can come from the newer `teamRef` relationship (Stasik picks a team from
- * the list) or from the legacy free-text fields. The relationship wins when set,
- * so name / school / logo always follow the Teams collection.
+ * Rows can come from the newer `teamRef` relationship (a team picked from the
+ * list) or from the legacy free-text fields.
+ *
+ * When a team IS picked it wins outright, including an empty logo. Falling back
+ * per-field meant a row showed the team's new name next to a leftover demo logo
+ * from a completely different school, which read as "the logo never updates".
  */
 const mapStanding = (r: {
   team?: string | null;
@@ -110,9 +113,9 @@ const mapStanding = (r: {
       ? (r.teamRef as { name?: string; school?: string | null; logo?: unknown })
       : null;
   return {
-    team: ref?.name ?? r.team ?? '',
-    logo: mediaUrl(ref?.logo ?? r.logo),
-    school: ref?.school ?? r.school ?? '',
+    team: ref ? (ref.name ?? '') : (r.team ?? ''),
+    logo: ref ? mediaUrl(ref.logo) : mediaUrl(r.logo),
+    school: ref ? (ref.school ?? '') : (r.school ?? ''),
     wins: r.wins ?? 0,
     draws: r.draws ?? 0,
     losses: r.losses ?? 0,
@@ -122,7 +125,7 @@ const mapStanding = (r: {
 
 export const getStandings = cache(async (): Promise<{ label: string; rows: StandingRow[] }[]> => {
   const payload = await client();
-  const { docs } = await payload.find({ collection: 'standings', limit: 100, sort: 'group', depth: 1 });
+  const { docs } = await payload.find({ collection: 'standings', limit: 100, sort: 'group', depth: 2 });
   const map = new Map<string, StandingRow[]>();
   for (const d of docs) {
     const label = d.group ?? 'Kiti';
@@ -139,7 +142,7 @@ export const getStandings = cache(async (): Promise<{ label: string; rows: Stand
 
 export const getSchedule = cache(async (): Promise<ScheduleEntry[]> => {
   const payload = await client();
-  const { docs } = await payload.find({ collection: 'schedule', limit: 100, sort: 'order', depth: 1 });
+  const { docs } = await payload.find({ collection: 'schedule', limit: 100, sort: 'order', depth: 2 });
   return docs.map((s) => {
     const refs = s.teamRefs;
     const teamsFromRefs = refs?.length

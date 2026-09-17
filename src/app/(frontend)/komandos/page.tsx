@@ -14,12 +14,14 @@ export default async function KomandosPage() {
       <section className="relative min-h-[240px] flex items-end overflow-hidden -mt-14">
         <Image src={siteConfig.pages.komandos.heroImage} alt="Komandos" fill className="object-cover object-top" priority />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24 flex items-end justify-between">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 w-full pb-10 pt-24 flex flex-wrap items-end justify-between gap-y-3">
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white">Komandos</h1>
-          <div className="flex items-center gap-2 text-xs pb-1">
-            <span className="text-white/50">Sezonas:</span>
-            <span className="border border-green-light text-green-light px-3 py-1">{settings.season || siteConfig.pages.komandos.season}</span>
-          </div>
+          {settings.season && (
+            <div className="flex items-center gap-2 text-xs pb-1">
+              <span className="text-white/50">Sezonas:</span>
+              <span className="border border-green-light text-green-light px-3 py-1">{settings.season}</span>
+            </div>
+          )}
         </div>
       </section>
 
