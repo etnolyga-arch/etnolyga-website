@@ -114,32 +114,25 @@ export default async function Home() {
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-3xl font-semibold text-graphite mb-8">Naujienos</h2>
           <div className="grid grid-cols-2 gap-1">
-            {/* Top row — 2 tall cards from news lib */}
-            <Link href={`/naujienos/${news[0].slug}`} className="relative block overflow-hidden group" style={{ aspectRatio: '4/3' }}>
-              <Image src={news[0].photo} alt={news[0].title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-[11px] text-white/60 mb-1">{news[0].date}</p>
-                <h3 className="text-sm font-semibold text-white leading-snug">{news[0].title}</h3>
-              </div>
-            </Link>
-            <Link href={`/naujienos/${news[1].slug}`} className="relative block overflow-hidden group" style={{ aspectRatio: '4/3' }}>
-              <Image src={news[1].photo} alt={news[1].title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-[11px] text-white/60 mb-1">{news[1].date}</p>
-                <h3 className="text-sm font-semibold text-white leading-snug">{news[1].title}</h3>
-              </div>
-            </Link>
-            {/* Bottom row — 1 card + inline CTA */}
-            <Link href={`/naujienos/${news[2].slug}`} className="relative block overflow-hidden group" style={{ aspectRatio: '16/7' }}>
-              <Image src={news[2].photo} alt={news[2].title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-[11px] text-white/60 mb-1">{news[2].date}</p>
-                <h3 className="text-sm font-semibold text-white leading-snug">{news[2].title}</h3>
-              </div>
-            </Link>
+            {/* Cards render from whatever news exists; the third is wide.
+                Previously hardcoded news[0..2] and crashed with fewer than 3. */}
+            {news.slice(0, 3).map((n, i) => (
+              <Link
+                key={n.slug}
+                href={`/naujienos/${n.slug}`}
+                className="relative block overflow-hidden group"
+                style={{ aspectRatio: i === 2 ? '16/7' : '4/3' }}
+              >
+                {n.photo && (
+                  <Image src={n.photo} alt={n.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="50vw" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-[11px] text-white/60 mb-1">{n.date}</p>
+                  <h3 className="text-sm font-semibold text-white leading-snug">{n.title}</h3>
+                </div>
+              </Link>
+            ))}
             <Link href="/naujienos" style={{ aspectRatio: '16/7' }} className="flex items-center justify-between px-8 py-6 border border-green-light hover:bg-green-light/30 transition-colors">
               <span className="font-display text-lg font-semibold text-green-dark">Daugiau naujienų</span>
               <img src="/images/ui/arrows/link-to.png" alt="" width={32} height={32} />

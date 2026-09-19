@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload';
 import { sportField } from '../fields/sport';
+import { slugField } from '../fields/slug';
 
 export const Teams: CollectionConfig = {
   slug: 'teams',
@@ -22,18 +23,7 @@ export const Teams: CollectionConfig = {
         description: 'Komandos pavadinimas be žodžio „Komanda“ — jis pridedamas automatiškai.',
       },
     },
-    {
-      name: 'slug',
-      type: 'text',
-      label: 'Nuoroda (slug)',
-      required: true,
-      unique: true,
-      admin: {
-        placeholder: 'peledziukai',
-        description:
-          'URL dalis, pvz. „peledziukai“. Tik mažosios raidės be lietuviškų raidžių, tarpus keiskite brūkšneliais. Turi būti unikalus.',
-      },
-    },
+    slugField('name'),
     {
       name: 'school',
       type: 'text',

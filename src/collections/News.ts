@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload';
 import { sportField } from '../fields/sport';
+import { slugField } from '../fields/slug';
 
 export const News: CollectionConfig = {
   slug: 'news',
@@ -23,18 +24,7 @@ export const News: CollectionConfig = {
         description: 'Naujienos antraštė. Rekomenduojama iki ~80 simbolių, kad gražiai tilptų kortelėje.',
       },
     },
-    {
-      name: 'slug',
-      type: 'text',
-      label: 'Nuoroda (slug)',
-      required: true,
-      unique: true,
-      admin: {
-        placeholder: 'stovykla-trakuose',
-        description:
-          'URL dalis, pvz. „stovykla-trakuose“. Tik mažosios raidės be lietuviškų raidžių, tarpus keiskite brūkšneliais. Turi būti unikalus.',
-      },
-    },
+    slugField('title'),
     {
       name: 'publishedAt',
       type: 'date',
